@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.main_fragment.accountBalance
 import kotlinx.android.synthetic.main.main_fragment.transactionsRecyclerView
 import me.manulorenzo.moneyyoutransaction.R
 import me.manulorenzo.moneyyoutransaction.model.TransactionData
@@ -32,6 +33,7 @@ class MainFragment : Fragment() {
         val assets = activity?.assets
         viewModel.getAccount(assetManager = assets)
         viewModel.accountLiveData.observe(this, Observer { account: Account ->
+            accountBalance.text = account.balance
             val transactionDataList = account.transactions.toPresentationTransactionDataList()
                 .sortedBy { transactionData: TransactionData -> transactionData.date }
             val adapter = TransactionListAdapter(transactionDataList, clickListener = {
