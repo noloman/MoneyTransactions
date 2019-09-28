@@ -1,4 +1,4 @@
-package me.manulorenzo.moneyyoutransaction.model
+package me.manulorenzo.moneyyoutransaction.model.ui
 
 import java.util.Date
 

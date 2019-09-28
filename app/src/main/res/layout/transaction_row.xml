@@ -27,9 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="37dp"
             android:text="@string/current_account"
-            app:layout_constraintEnd_toStartOf="@+id/arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 
@@ -38,9 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="37dp"
             android:text="@string/arrow"
             app:layout_constraintEnd_toStartOf="@+id/otherAccount"
+            app:layout_constraintStart_toEndOf="@+id/currentAccount"
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 
         <TextView
@@ -70,9 +68,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:textSize="14sp"
+            android:lines="1"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/otherAccount"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/otherAccount"
             app:layout_constraintTop_toBottomOf="@+id/otherAccount"
             tools:text="2018-05-13T18:19:00Z" />

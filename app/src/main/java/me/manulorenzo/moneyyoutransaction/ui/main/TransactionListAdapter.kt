@@ -1,4 +1,4 @@
-package me.manulorenzo.moneyyoutransaction.ui
+package me.manulorenzo.moneyyoutransaction.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.transaction_row.view.date
 import kotlinx.android.synthetic.main.transaction_row.view.description
 import kotlinx.android.synthetic.main.transaction_row.view.otherAccount
 import me.manulorenzo.moneyyoutransaction.R
-import me.manulorenzo.moneyyoutransaction.model.TransactionData
+import me.manulorenzo.moneyyoutransaction.model.ui.TransactionData
 import java.text.SimpleDateFormat
 import java.util.Locale
 
