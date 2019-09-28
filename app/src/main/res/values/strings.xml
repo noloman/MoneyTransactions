@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoneyYouTransaction</string>
+    <string name="arrow">➡</string>
 </resources>

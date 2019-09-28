@@ -9,14 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import kotlinx.android.synthetic.main.main_fragment.transactionsRecyclerView
 import me.manulorenzo.moneyyoutransaction.R
-import me.manulorenzo.moneyyoutransaction.model.Account
+import me.manulorenzo.moneyyoutransaction.model.TransactionData
+import me.manulorenzo.moneyyoutransaction.model.data.Account
+import me.manulorenzo.moneyyoutransaction.ui.TransactionListAdapter
+import me.manulorenzo.moneyyoutransaction.util.toPresentationTransactionDataList
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import java.util.Objects
 
 
 class MainFragment : Fragment() {
+    private var account: Account? = null
 
     companion object {
         fun newInstance() = MainFragment()
@@ -27,12 +31,10 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
+    ): View = inflater.inflate(R.layout.main_fragment, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         val assets = activity?.assets
         val filename = "transactions.json"
@@ -46,8 +48,19 @@ class MainFragment : Fragment() {
         val byteArray = outputStream.toByteArray()
         val transactionString = String(byteArray, Charsets.UTF_8)
         val moshi: Moshi = Moshi.Builder().build()
-        val jsonAdapter: JsonAdapter<Account> = moshi.adapter(Account::class.java)
-        val account: Account? = jsonAdapter.fromJson(transactionString)
-        Objects.requireNonNull(account)
+        val jsonAdapter: JsonAdapter<Account> = moshi.adapter(
+            Account::class.java
+        )
+
+        account = jsonAdapter.fromJson(transactionString)
+
+        val transactionDataList = account?.transactions?.toPresentationTransactionDataList()
+            ?.sortedBy { transactionData: TransactionData -> transactionData.date }
+        val adapter = transactionDataList?.let {
+            TransactionListAdapter(it, clickListener = {
+                // TODO Go to new fragment/activity
+            })
+        }
+        transactionsRecyclerView.adapter = adapter
     }
 }

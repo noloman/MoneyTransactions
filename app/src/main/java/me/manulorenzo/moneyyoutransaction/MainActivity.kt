@@ -1,7 +1,7 @@
 package me.manulorenzo.moneyyoutransaction
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import me.manulorenzo.moneyyoutransaction.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance())
+                // TODO Why commitNow?
                 .commitNow()
         }
     }
-
 }
