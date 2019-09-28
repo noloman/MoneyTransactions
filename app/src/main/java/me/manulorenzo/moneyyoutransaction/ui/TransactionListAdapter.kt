@@ -35,14 +35,10 @@ class TransactionViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {
     fun bindTransaction(transaction: TransactionData, clickListener: (View) -> Unit) {
         with(itemView) {
-            //            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
-//            val date: Date? = dateFormat.parse(transaction.date)
             val dateTimeFormatter =
                 SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss", Locale.getDefault())
             this.setOnClickListener { clickListener.invoke(it) }
             this.amount.text = transaction.amount
-            // TODO Fix ""
-//            this.date.text = date?.let { dateTimeFormatter.format(it) } ?: ""
             this.date.text = dateTimeFormatter.format(transaction.date)
             this.otherAccount.text = transaction.otherAccount
             this.description.text = transaction.description

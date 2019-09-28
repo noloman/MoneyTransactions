@@ -6,5 +6,5 @@ data class TransactionData(
     val amount: String,
     val description: String,
     val otherAccount: String,
-    val date: Date?
+    val date: Date
 )
