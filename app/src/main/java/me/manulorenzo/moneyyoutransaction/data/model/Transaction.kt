@@ -1,4 +1,4 @@
-package me.manulorenzo.moneyyoutransaction.model.data
+package me.manulorenzo.moneyyoutransaction.data.model
 
 import com.squareup.moshi.JsonClass
 

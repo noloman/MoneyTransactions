@@ -5,16 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.transaction_row.view.amount
+import kotlinx.android.synthetic.main.transaction_row.view.balanceAfter
+import kotlinx.android.synthetic.main.transaction_row.view.balanceBefore
 import kotlinx.android.synthetic.main.transaction_row.view.date
 import kotlinx.android.synthetic.main.transaction_row.view.description
 import kotlinx.android.synthetic.main.transaction_row.view.otherAccount
 import me.manulorenzo.moneyyoutransaction.R
-import me.manulorenzo.moneyyoutransaction.model.ui.TransactionData
-import java.text.SimpleDateFormat
-import java.util.Locale
+import me.manulorenzo.moneyyoutransaction.data.model.ui.TransactionEntity
+import org.threeten.bp.format.DateTimeFormatter
 
 class TransactionListAdapter(
-    private val transactionList: List<TransactionData>,
+    private val transactionList: List<TransactionEntity>,
     val clickListener: (View) -> (Unit)
 ) : RecyclerView.Adapter<TransactionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
@@ -33,13 +34,20 @@ class TransactionListAdapter(
 
 class TransactionViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {
-    fun bindTransaction(transaction: TransactionData, clickListener: (View) -> Unit) {
+    fun bindTransaction(transaction: TransactionEntity, clickListener: (View) -> Unit) {
         with(itemView) {
-            val dateTimeFormatter =
-                SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss", Locale.getDefault())
             this.setOnClickListener { clickListener.invoke(it) }
-            this.amount.text = transaction.amount
-            this.date.text = dateTimeFormatter.format(transaction.date)
+            this.balanceBefore.text = String.format(
+                itemView.resources.getString(R.string.balance_before),
+                transaction.balanceBefore.toPlainString()
+            )
+            this.balanceAfter.text = String.format(
+                itemView.resources.getString(R.string.balance_after),
+                transaction.balanceAfter.toPlainString()
+            )
+            this.amount.text = transaction.amount.toPlainString()
+            this.date.text =
+                transaction.date.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm:ss"))
             this.otherAccount.text = transaction.otherAccount
             this.description.text = transaction.description
         }

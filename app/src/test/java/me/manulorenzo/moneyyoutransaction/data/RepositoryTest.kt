@@ -1,53 +1,53 @@
-package me.manulorenzo.moneyyoutransaction.ui.main
+package me.manulorenzo.moneyyoutransaction.data
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import android.app.Application
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doAnswer
+import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneyyoutransaction.data.model.Account
-import me.manulorenzo.moneyyoutransaction.data.model.ui.AccountEntity
 import me.manulorenzo.moneyyoutransaction.data.repository.Repository
+import me.manulorenzo.moneyyoutransaction.di.MoshiModule
 import me.manulorenzo.moneyyoutransaction.di.dataModule
 import org.junit.Assert.assertEquals
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
-import org.koin.test.mock.declareMock
-import org.robolectric.RobolectricTestRunner
+import org.mockito.Mockito
+import java.io.BufferedReader
+
 
 @ExperimentalCoroutinesApi
-@RunWith(RobolectricTestRunner::class)
-class AccountViewModelTest : AutoCloseKoinTest() {
-    private val viewModel: AccountViewModel by inject()
-    private var fakeAccount: Account? = null
+class RepositoryTest : AutoCloseKoinTest() {
+    private val context: Application = mock()
     private val repository: Repository by inject()
-    private val moshiAccountAdapter: JsonAdapter<Account> by inject()
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    private var fakeAccount: Account? = null
 
     @Before
     fun setup() {
         startKoin {
+            androidContext(context)
             modules(dataModule)
         }
-        declareMock<Repository>()
-        declareMock<JsonAdapter<Account>>()
     }
 
-
     @Test
-    fun `when getting an account it should show the expected values`() = runBlockingTest {
-        fakeAccount = moshiAccountAdapter.fromJson(json)
-        whenever(repository.getAccount()).thenReturn(fakeAccount)
-        viewModel.accountLiveData.observeForever { account: AccountEntity ->
-            assertEquals(fakeAccount?.account, account.account)
-        }
+    fun test1() = runBlockingTest {
+        whenever(context.assets) doAnswer { mock() }
+        whenever(context.assets.open(any())) doAnswer { mock() }
+        whenever(repository.getTransactionString()) doAnswer { json }
+        val bufferedReader: BufferedReader =
+            Mockito.mock<BufferedReader>(BufferedReader::class.java)
+        whenever<Any>(bufferedReader.readLine()).thenReturn(json)
+
+        fakeAccount = MoshiModule.moshiAccountAdapter.fromJson(json)
+
+        assertEquals(fakeAccount, repository.getAccount())
     }
 
     private val json = """

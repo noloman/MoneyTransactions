@@ -1,11 +1,10 @@
-package me.manulorenzo.moneyyoutransaction
+package me.manulorenzo.moneyyoutransaction.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import me.manulorenzo.moneyyoutransaction.ui.main.AccountFragment
+import me.manulorenzo.moneyyoutransaction.R
 
-class MainActivity : AppCompatActivity() {
-
+class AccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)

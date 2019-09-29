@@ -1,8 +1,8 @@
-package me.manulorenzo.moneyyoutransaction.data
+package me.manulorenzo.moneyyoutransaction.di
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import me.manulorenzo.moneyyoutransaction.model.data.Account
+import me.manulorenzo.moneyyoutransaction.data.model.Account
 
 object MoshiModule {
     val moshiAccountAdapter: JsonAdapter<Account> =
