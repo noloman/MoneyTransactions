@@ -1,10 +1,9 @@
 package me.manulorenzo.moneyyoutransaction.data
 
 import android.app.Application
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
+import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneyyoutransaction.data.model.Account
@@ -18,8 +17,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
-import org.mockito.Mockito
-import java.io.BufferedReader
+import org.koin.test.mock.declareMock
 
 
 @ExperimentalCoroutinesApi
@@ -34,20 +32,18 @@ class RepositoryTest : AutoCloseKoinTest() {
             androidContext(context)
             modules(dataModule)
         }
+        declareMock<Repository>()
+        declareMock<JsonAdapter<Account>>()
     }
 
     @Test
-    fun test1() = runBlockingTest {
-        whenever(context.assets) doAnswer { mock() }
-        whenever(context.assets.open(any())) doAnswer { mock() }
-        whenever(repository.getTransactionString()) doAnswer { json }
-        val bufferedReader: BufferedReader =
-            Mockito.mock<BufferedReader>(BufferedReader::class.java)
-        whenever<Any>(bufferedReader.readLine()).thenReturn(json)
+    fun `it should retrieve an account from the transactions json`() = runBlockingTest {
+        whenever(repository.getTransactionString()).thenReturn(json)
 
         fakeAccount = MoshiModule.moshiAccountAdapter.fromJson(json)
+        val expectedAccount = repository.getAccount()
 
-        assertEquals(fakeAccount, repository.getAccount())
+        assertEquals(fakeAccount, expectedAccount)
     }
 
     private val json = """

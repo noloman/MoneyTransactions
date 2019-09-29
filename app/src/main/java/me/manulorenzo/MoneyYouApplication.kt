@@ -4,6 +4,7 @@ import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
 import me.manulorenzo.moneyyoutransaction.BuildConfig
+import me.manulorenzo.moneyyoutransaction.di.coroutinesModule
 import me.manulorenzo.moneyyoutransaction.di.dataModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -25,7 +26,7 @@ class MoneyYouApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MoneyYouApplication)
-            modules(dataModule)
+            modules(listOf(dataModule, coroutinesModule))
         }
     }
 }

@@ -14,5 +14,5 @@ val dataModule = module {
             get()
         ) as Repository
     }
-    viewModel { AccountViewModel(get()) }
+    viewModel { AccountViewModel(get(), get()) }
 }
