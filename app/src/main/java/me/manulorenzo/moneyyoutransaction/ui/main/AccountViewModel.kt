@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.manulorenzo.moneyyoutransaction.data.model.Account
-import me.manulorenzo.moneyyoutransaction.data.model.Transaction
-import me.manulorenzo.moneyyoutransaction.data.model.ui.AccountEntity
+import me.manulorenzo.moneyyoutransaction.data.model.AccountData
+import me.manulorenzo.moneyyoutransaction.data.model.TransactionData
+import me.manulorenzo.moneyyoutransaction.data.model.ui.Account
 import me.manulorenzo.moneyyoutransaction.data.repository.Repository
 import me.manulorenzo.moneyyoutransaction.util.CoroutineContextDelegate
 import me.manulorenzo.moneyyoutransaction.util.CoroutineContextProvider
@@ -21,22 +21,22 @@ class AccountViewModel(
     private val coroutineContextProvider: CoroutineContextProvider
 ) : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext by CoroutineContextDelegate()
-    val accountLiveData: MutableLiveData<AccountEntity> by lazy {
-        MutableLiveData<AccountEntity>().also { liveData: MutableLiveData<AccountEntity> ->
+    val accountLiveData: MutableLiveData<Account> by lazy {
+        MutableLiveData<Account>().also { liveData: MutableLiveData<Account> ->
             launch(coroutineContextProvider.io) {
-                val account: Account? = repository.getAccount()
-                val initialBalance = BigDecimal(getTransactionsSum(account))
-                val accountEntity: AccountEntity? = account?.accountEntity(initialBalance)
-                liveData.postValue(accountEntity)
+                val accountData: AccountData? = repository.getAccount()
+                val initialBalance = BigDecimal(getTransactionsSum(accountData))
+                val account = accountData?.accountEntity(initialBalance)
+                liveData.postValue(account)
             }
         }
     }
 
     @VisibleForTesting
-    suspend fun getTransactionsSum(account: Account?): String? =
+    suspend fun getTransactionsSum(accountData: AccountData?): String? =
         withContext(coroutineContextProvider.default) {
-            account?.transactions?.map { transaction: Transaction -> transaction.amount }
-                ?.fold(account.balance) { acc, transactionAmount ->
+            accountData?.transactions?.map { transactionData: TransactionData -> transactionData.amount }
+                ?.fold(accountData.balance) { acc, transactionAmount ->
                     val accInt: BigDecimal = BigDecimal(acc) - BigDecimal(transactionAmount)
                     val plainString = accInt.toPlainString()
                     plainString

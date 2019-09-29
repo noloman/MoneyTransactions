@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import me.manulorenzo.moneyyoutransaction.data.model.Account
+import me.manulorenzo.moneyyoutransaction.data.model.AccountData
 import me.manulorenzo.moneyyoutransaction.data.repository.Repository
 import me.manulorenzo.moneyyoutransaction.di.MoshiModule
 import me.manulorenzo.moneyyoutransaction.di.dataModule
@@ -24,7 +24,7 @@ import org.koin.test.mock.declareMock
 class RepositoryTest : AutoCloseKoinTest() {
     private val context: Application = mock()
     private val repository: Repository by inject()
-    private var fakeAccount: Account? = null
+    private var fakeAccountData: AccountData? = null
 
     @Before
     fun setup() {
@@ -33,17 +33,17 @@ class RepositoryTest : AutoCloseKoinTest() {
             modules(dataModule)
         }
         declareMock<Repository>()
-        declareMock<JsonAdapter<Account>>()
+        declareMock<JsonAdapter<AccountData>>()
     }
 
     @Test
     fun `it should retrieve an account from the transactions json`() = runBlockingTest {
         whenever(repository.getTransactionString()).thenReturn(json)
 
-        fakeAccount = MoshiModule.moshiAccountAdapter.fromJson(json)
+        fakeAccountData = MoshiModule.MOSHI_ACCOUNT_DATA_ADAPTER.fromJson(json)
         val expectedAccount = repository.getAccount()
 
-        assertEquals(fakeAccount, expectedAccount)
+        assertEquals(fakeAccountData, expectedAccount)
     }
 
     private val json = """

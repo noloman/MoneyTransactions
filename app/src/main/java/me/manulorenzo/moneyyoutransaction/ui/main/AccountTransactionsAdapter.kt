@@ -11,11 +11,11 @@ import kotlinx.android.synthetic.main.transaction_row.view.date
 import kotlinx.android.synthetic.main.transaction_row.view.description
 import kotlinx.android.synthetic.main.transaction_row.view.otherAccount
 import me.manulorenzo.moneyyoutransaction.R
-import me.manulorenzo.moneyyoutransaction.data.model.ui.TransactionEntity
+import me.manulorenzo.moneyyoutransaction.data.model.ui.Transaction
 import org.threeten.bp.format.DateTimeFormatter
 
 class TransactionListAdapter(
-    private val transactionList: List<TransactionEntity>,
+    private val transactionList: List<Transaction>,
     val clickListener: (View) -> (Unit)
 ) : RecyclerView.Adapter<TransactionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
@@ -34,7 +34,7 @@ class TransactionListAdapter(
 
 class TransactionViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {
-    fun bindTransaction(transaction: TransactionEntity, clickListener: (View) -> Unit) {
+    fun bindTransaction(transaction: Transaction, clickListener: (View) -> Unit) {
         with(itemView) {
             this.setOnClickListener { clickListener.invoke(it) }
             this.balanceBefore.text = String.format(

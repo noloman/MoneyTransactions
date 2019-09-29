@@ -3,16 +3,16 @@ package me.manulorenzo.moneyyoutransaction.data.repository
 import android.content.Context
 import android.content.res.AssetManager
 import com.squareup.moshi.JsonAdapter
-import me.manulorenzo.moneyyoutransaction.data.model.Account
+import me.manulorenzo.moneyyoutransaction.data.model.AccountData
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 
 class RepositoryImpl(
     private val context: Context,
-    private val moshiJsonAccountAdapter: JsonAdapter<Account>
+    private val moshiJsonAccountDataAdapter: JsonAdapter<AccountData>
 ) : Repository {
-    override suspend fun getAccount(): Account? =
-        moshiJsonAccountAdapter.fromJson(getTransactionString())
+    override suspend fun getAccount(): AccountData? =
+        moshiJsonAccountDataAdapter.fromJson(getTransactionString())
 
     override suspend fun getTransactionString(): String {
         val filename = "transactions.json"

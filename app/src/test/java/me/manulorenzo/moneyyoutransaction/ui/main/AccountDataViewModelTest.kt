@@ -6,8 +6,8 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import me.manulorenzo.moneyyoutransaction.data.model.Account
-import me.manulorenzo.moneyyoutransaction.data.model.ui.AccountEntity
+import me.manulorenzo.moneyyoutransaction.data.model.AccountData
+import me.manulorenzo.moneyyoutransaction.data.model.ui.Account
 import me.manulorenzo.moneyyoutransaction.data.repository.Repository
 import me.manulorenzo.moneyyoutransaction.di.coroutinesModule
 import me.manulorenzo.moneyyoutransaction.di.dataModule
@@ -26,11 +26,11 @@ import org.robolectric.RobolectricTestRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
-class AccountViewModelTest : AutoCloseKoinTest() {
+class AccountDataViewModelTest : AutoCloseKoinTest() {
     private lateinit var accountViewModel: AccountViewModel
     private val repository: Repository by inject()
-    private val moshiAccountAdapter: JsonAdapter<Account> by inject()
-    private var fakeAccount: Account? = null
+    private val moshiAccountDataAdapter: JsonAdapter<AccountData> by inject()
+    private var fakeAccountData: AccountData? = null
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -47,12 +47,12 @@ class AccountViewModelTest : AutoCloseKoinTest() {
 
     @Test
     fun `when getting an account it should show the expected values`() = runBlockingTest {
-        fakeAccount = moshiAccountAdapter.fromJson(json)
-        whenever(repository.getAccount()).thenReturn(fakeAccount)
+        fakeAccountData = moshiAccountDataAdapter.fromJson(json)
+        whenever(repository.getAccount()).thenReturn(fakeAccountData)
 
         accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
-        accountViewModel.accountLiveData.observeForever { account: AccountEntity ->
-            assertEquals(fakeAccount?.account, account.account)
+        accountViewModel.accountLiveData.observeForever { account: Account ->
+            assertEquals(fakeAccountData?.account, account.account)
         }
         verify(accountViewModel.repository).getAccount()
     }
@@ -60,11 +60,11 @@ class AccountViewModelTest : AutoCloseKoinTest() {
     @Test
     fun `when getting the total sum of all the transactions it should return the sum of them plus the account balance`() =
         runBlockingTest {
-            fakeAccount = moshiAccountAdapter.fromJson(json)
-            whenever(repository.getAccount()).thenReturn(fakeAccount)
+            fakeAccountData = moshiAccountDataAdapter.fromJson(json)
+            whenever(repository.getAccount()).thenReturn(fakeAccountData)
 
             accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
-            assertEquals("849.70", accountViewModel.getTransactionsSum(fakeAccount))
+            assertEquals("849.70", accountViewModel.getTransactionsSum(fakeAccountData))
         }
 
     private val json = """

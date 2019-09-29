@@ -9,8 +9,8 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.main_fragment.accountBalance
 import kotlinx.android.synthetic.main.main_fragment.transactionsRecyclerView
 import me.manulorenzo.moneyyoutransaction.R
-import me.manulorenzo.moneyyoutransaction.data.model.ui.AccountEntity
-import me.manulorenzo.moneyyoutransaction.data.model.ui.TransactionEntity
+import me.manulorenzo.moneyyoutransaction.data.model.ui.Account
+import me.manulorenzo.moneyyoutransaction.data.model.ui.Transaction
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountFragment : Fragment() {
@@ -27,9 +27,9 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        accountViewModel.accountLiveData.observe(this, Observer { accountEntity: AccountEntity ->
-            accountBalance.text = accountEntity.balance
-            val adapter = accountEntity.transactions?.let { list: List<TransactionEntity> ->
+        accountViewModel.accountLiveData.observe(this, Observer { account: Account ->
+            accountBalance.text = account.balance
+            val adapter = account.transactions?.let { list: List<Transaction> ->
                 TransactionListAdapter(
                     transactionList = list,
                     clickListener = {

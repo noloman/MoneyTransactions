@@ -3,7 +3,7 @@ package me.manulorenzo.moneyyoutransaction.data.model.ui
 import org.threeten.bp.LocalDateTime
 import java.math.BigDecimal
 
-data class TransactionEntity(
+data class Transaction(
     var amount: BigDecimal,
     var balanceBefore: BigDecimal,
     var balanceAfter: BigDecimal,

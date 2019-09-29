@@ -3,7 +3,7 @@ package me.manulorenzo.moneyyoutransaction.data.model
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Transaction(
+data class TransactionData(
     val id: String,
     val amount: String,
     val description: String,
