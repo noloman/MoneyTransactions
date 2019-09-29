@@ -40,7 +40,7 @@ class RepositoryTest : AutoCloseKoinTest() {
     fun `it should retrieve an account from the transactions json`() = runBlockingTest {
         whenever(repository.getTransactionString()).thenReturn(json)
 
-        fakeAccountData = MoshiModule.MOSHI_ACCOUNT_DATA_ADAPTER.fromJson(json)
+        fakeAccountData = MoshiModule.moshiAccountDataAdapter.fromJson(json)
         val expectedAccount = repository.getAccount()
 
         assertEquals(fakeAccountData, expectedAccount)

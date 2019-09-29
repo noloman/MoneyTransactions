@@ -3,6 +3,7 @@ package me.manulorenzo.moneyyoutransaction.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.transaction_row.view.amount
 import kotlinx.android.synthetic.main.transaction_row.view.balanceAfter
@@ -32,7 +33,8 @@ class TransactionListAdapter(
     }
 }
 
-class TransactionViewHolder(itemView: View) :
+@VisibleForTesting
+open class TransactionViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {
     fun bindTransaction(transaction: Transaction, clickListener: (View) -> Unit) {
         with(itemView) {
