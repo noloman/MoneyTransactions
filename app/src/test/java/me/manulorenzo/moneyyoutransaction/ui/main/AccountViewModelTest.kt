@@ -11,7 +11,6 @@ import me.manulorenzo.moneyyoutransaction.data.model.ui.AccountEntity
 import me.manulorenzo.moneyyoutransaction.data.repository.Repository
 import me.manulorenzo.moneyyoutransaction.di.coroutinesModule
 import me.manulorenzo.moneyyoutransaction.di.dataModule
-import me.manulorenzo.moneyyoutransaction.util.CoroutineContextDelegate
 import me.manulorenzo.moneyyoutransaction.util.CoroutinesTestRule
 import me.manulorenzo.moneyyoutransaction.util.TestCoroutineContextProvider
 import org.junit.Assert.assertEquals
@@ -44,25 +43,23 @@ class AccountViewModelTest : AutoCloseKoinTest() {
             modules(listOf(dataModule, coroutinesModule))
         }
         declareMock<Repository>()
-        declareMock<CoroutineContextDelegate>()
     }
 
     @Test
-    fun `when getting an account it should show the expected values`() =
-        coroutinesTestRule.testDispatcher.runBlockingTest {
-            fakeAccount = moshiAccountAdapter.fromJson(json)
-            whenever(repository.getAccount()).thenReturn(fakeAccount)
+    fun `when getting an account it should show the expected values`() = runBlockingTest {
+        fakeAccount = moshiAccountAdapter.fromJson(json)
+        whenever(repository.getAccount()).thenReturn(fakeAccount)
 
-            accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
-            accountViewModel.accountLiveData.observeForever { account: AccountEntity ->
-                assertEquals(fakeAccount?.account, account.account)
-            }
-            verify(accountViewModel.repository).getAccount()
+        accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
+        accountViewModel.accountLiveData.observeForever { account: AccountEntity ->
+            assertEquals(fakeAccount?.account, account.account)
         }
+        verify(accountViewModel.repository).getAccount()
+    }
 
     @Test
     fun `when getting the total sum of all the transactions it should return the sum of them plus the account balance`() =
-        coroutinesTestRule.testDispatcher.runBlockingTest {
+        runBlockingTest {
             fakeAccount = moshiAccountAdapter.fromJson(json)
             whenever(repository.getAccount()).thenReturn(fakeAccount)
 
