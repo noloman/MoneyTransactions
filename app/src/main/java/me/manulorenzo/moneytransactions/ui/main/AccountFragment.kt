@@ -57,24 +57,25 @@ class AccountFragment : Fragment() {
 
     private fun createSharedElementTransition(transaction: Transaction) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val autoTransition: Transition = TransitionInflater.from(activity)
-                .inflateTransition(R.transition.auto_transition)
-            val explodeTransition: Transition = TransitionInflater.from(activity)
-                .inflateTransition(android.R.transition.fade)
+            val autoTransition =
+                TransitionInflater.from(activity).inflateTransition(android.R.transition.fade)
+            val slideRight: Transition = TransitionInflater.from(activity)
+                .inflateTransition(android.R.transition.slide_right)
+            val slideLeft: Transition = TransitionInflater.from(activity)
+                .inflateTransition(android.R.transition.slide_left)
             this.sharedElementReturnTransition = autoTransition
-            this.reenterTransition = autoTransition
-            this.exitTransition = explodeTransition
+            this.exitTransition = slideLeft
 
             TransactionFragment.newInstance(transaction)
                 .also { transactionFragment: TransactionFragment ->
                     transactionFragment.sharedElementEnterTransition =
                         autoTransition
-                    transactionFragment.enterTransition = explodeTransition
-                    fragmentManager?.beginTransaction()?.replace(
-                        R.id.container,
-                        transactionFragment,
-                        TransactionFragment.TAG
-                    )?.addToBackStack(null)
+                    transactionFragment.enterTransition = slideRight
+                    fragmentManager?.beginTransaction()
+                        ?.setReorderingAllowed(true)
+                        ?.replace(
+                            R.id.container, transactionFragment, TransactionFragment.TAG
+                        )?.addToBackStack(null)
                         ?.addSharedElement(
                             description,
                             resources.getString(R.string.description_shared_element_transition_name)

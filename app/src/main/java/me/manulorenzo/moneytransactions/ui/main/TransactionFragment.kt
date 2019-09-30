@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_transaction.amount
 import kotlinx.android.synthetic.main.fragment_transaction.balanceAfter
@@ -35,6 +36,7 @@ class TransactionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
         val transaction = arguments?.getParcelable<Transaction>(TRANSACTION_PARCELABLE_KEY)
         currentAccount.text = String.format(
             resources.getString(R.string.current_account_placeholder),
@@ -61,5 +63,7 @@ class TransactionFragment : Fragment() {
             transaction?.date?.format(DateTimeFormatter.ofPattern("EEEE dd MMM yyyy HH:mm:ss"))
         otherAccount.text = transaction?.otherAccount
         description.text = transaction?.description
+
+        (view.parent as? ViewGroup)?.doOnPreDraw { startPostponedEnterTransition() }
     }
 }
