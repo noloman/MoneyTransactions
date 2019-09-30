@@ -12,7 +12,7 @@ import me.manulorenzo.moneytransactions.data.model.ui.Account
 import me.manulorenzo.moneytransactions.data.repository.Repository
 import me.manulorenzo.moneytransactions.util.CoroutineContextDelegate
 import me.manulorenzo.moneytransactions.util.CoroutineContextProvider
-import me.manulorenzo.moneytransactions.util.accountEntity
+import me.manulorenzo.moneytransactions.util.account
 import java.math.BigDecimal
 import kotlin.coroutines.CoroutineContext
 
@@ -26,7 +26,7 @@ class AccountViewModel(
             launch(coroutineContextProvider.io) {
                 val accountData: AccountData? = repository.getAccount()
                 val initialBalance = BigDecimal(getTransactionsSum(accountData))
-                val account = accountData?.accountEntity(initialBalance)
+                val account = accountData?.account(initialBalance)
                 liveData.postValue(account)
             }
         }

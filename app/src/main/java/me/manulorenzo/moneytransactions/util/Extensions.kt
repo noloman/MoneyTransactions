@@ -4,16 +4,29 @@ import me.manulorenzo.moneytransactions.data.model.AccountData
 import me.manulorenzo.moneytransactions.data.model.TransactionData
 import me.manulorenzo.moneytransactions.data.model.ui.Account
 import me.manulorenzo.moneytransactions.data.model.ui.Transaction
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import java.math.BigDecimal
+import java.text.ParseException
 
-fun TransactionData.transactionEntity() =
+fun String.toDate(): LocalDateTime = try {
+    LocalDateTime.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX"))
+} catch (e: ParseException) {
+    // TODO Error handling
+    LocalDateTime.now()
+}
+
+fun TransactionData.transaction(
+    balanceBefore: BigDecimal = BigDecimal.ZERO,
+    balanceAfter: BigDecimal = BigDecimal.ZERO
+) =
     Transaction(
-        BigDecimal(this.amount),
-        BigDecimal.ZERO,
-        BigDecimal.ZERO,
-        this.description,
-        this.otherAccount,
-        date = DateConverter().toDate(this.date)
+        amount = BigDecimal(this.amount),
+        balanceBefore = balanceBefore,
+        balanceAfter = balanceAfter,
+        description = this.description,
+        otherAccount = this.otherAccount,
+        date = this.date.toDate()
     )
 
 inline fun <R> List<Transaction>.map(
@@ -31,18 +44,11 @@ inline fun <R> List<Transaction>.map(
     return destination
 }
 
-fun AccountData.accountEntity(initialBalance: BigDecimal): Account = Account(
+fun AccountData.account(initialBalance: BigDecimal): Account = Account(
     account = account,
     balance = balance,
-    transactions = transactions.map { transactionData: TransactionData -> transactionData.transactionEntity() }
+    transactions = transactions.map { transactionData: TransactionData -> transactionData.transaction() }
         .sortedByDescending { transaction: Transaction -> transaction.date }
-        .map(initialBalance) { transaction: Transaction, beforeBalance: BigDecimal, afterBalance: BigDecimal ->
-            Transaction(
-                transaction.amount,
-                beforeBalance,
-                afterBalance,
-                transaction.description,
-                transaction.otherAccount,
-                transaction.date
-            )
+        .map(initialBalance) { transaction: Transaction, balanceBefore: BigDecimal, balanceAfter: BigDecimal ->
+            transaction.copy(balanceBefore = balanceBefore, balanceAfter = balanceAfter)
         })
