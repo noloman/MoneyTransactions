@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.manulorenzo.moneyyoutransaction">
+    package="me.manulorenzo.moneytransactions">
 
     <application
-        android:name="me.manulorenzo.MoneyYouApplication"
+        android:name="me.manulorenzo.MoneyTransactionsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.AccountActivity">
+        <activity android:name="me.manulorenzo.moneytransactions.ui.main.AccountActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

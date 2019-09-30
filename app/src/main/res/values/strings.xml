@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoneyYouTransaction</string>
+    <string name="app_name">MoneyTransactions</string>
     <string name="arrow">➡</string>
     <string name="current_account">NL42ABNA7285928462</string>
     <string name="balance_before">Before: %1$s</string>
