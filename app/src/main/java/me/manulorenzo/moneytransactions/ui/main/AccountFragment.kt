@@ -32,8 +32,12 @@ class AccountFragment : Fragment() {
             val adapter = account.transactions?.let { list: List<Transaction> ->
                 TransactionListAdapter(
                     transactionList = list,
-                    clickListener = {
-                        // TODO Go to new fragment/activity
+                    clickListener = { transaction: Transaction ->
+                        fragmentManager?.beginTransaction()?.replace(
+                            R.id.container,
+                            TransactionFragment.newInstance(transaction),
+                            TransactionFragment.TAG
+                        )?.addToBackStack(TransactionFragment.TAG)?.commit()
                     })
             }
             transactionsRecyclerView.adapter = adapter

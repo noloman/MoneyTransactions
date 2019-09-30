@@ -17,7 +17,7 @@ import org.threeten.bp.format.DateTimeFormatter
 
 class TransactionListAdapter(
     private val transactionList: List<Transaction>,
-    val clickListener: (View) -> (Unit)
+    val clickListener: (Transaction) -> (Unit)
 ) : RecyclerView.Adapter<TransactionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
         val view =
@@ -36,9 +36,9 @@ class TransactionListAdapter(
 @VisibleForTesting
 open class TransactionViewHolder(itemView: View) :
     RecyclerView.ViewHolder(itemView) {
-    fun bindTransaction(transaction: Transaction, clickListener: (View) -> Unit) {
+    fun bindTransaction(transaction: Transaction, clickListener: (Transaction) -> Unit) {
         with(itemView) {
-            this.setOnClickListener { clickListener.invoke(it) }
+            this.setOnClickListener { clickListener.invoke(transaction) }
             this.balanceBefore.text = String.format(
                 itemView.resources.getString(R.string.balance_before),
                 transaction.balanceBefore.toPlainString()
