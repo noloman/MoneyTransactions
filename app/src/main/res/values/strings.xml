@@ -1,10 +1,19 @@
 <resources>
     <string name="app_name">MoneyTransactions</string>
     <string name="arrow">➡</string>
-    <string name="current_account">NL42ABNA7285928462</string>
-    <string name="balance_before">Before: %1$s</string>
-    <string name="balance_after">After: %1$s</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="current_account_number" translatable="false">NL42ABNA7285928462</string>
+    <string name="balance_before_placeholder">Before: %1$s</string>
+    <string name="balance_after_placeholder">After: %1$s</string>
+    <string name="balance_amount_placeholder">%1$s</string>
+    <string name="current_account_placeholder">From: %1$s</string>
+    <string name="destination_account_placeholder">To: %1$s</string>
+    <string name="current_balance_placeholder">%1$s</string>
+    <!-- TRANSITION NAMES -->
+    <string name="balance_before_shared_element_transition_name" translatable="false">balanceBefore</string>
+    <string name="balance_after_shared_element_transition_name" translatable="false">balanceAfter</string>
+    <string name="description_shared_element_transition_name" translatable="false">description</string>
+    <string name="amount_shared_element_transition_name" translatable="false">amount</string>
+    <string name="current_account_shared_element_transition_name" translatable="false">currentAccount</string>
+    <string name="other_account_shared_element_transition_name" translatable="false">otherAccount</string>
+    <string name="date_shared_element_transition_name" translatable="false">date</string>
 </resources>

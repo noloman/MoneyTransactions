@@ -1,17 +1,29 @@
 package me.manulorenzo.moneytransactions.ui.main
 
+import android.os.Build
 import android.os.Bundle
+import android.transition.Transition
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.main_fragment.accountBalance
-import kotlinx.android.synthetic.main.main_fragment.transactionsRecyclerView
+import kotlinx.android.synthetic.main.fragment_account.accountBalance
+import kotlinx.android.synthetic.main.fragment_account.transactionsRecyclerView
+import kotlinx.android.synthetic.main.fragment_transaction.balanceAfter
+import kotlinx.android.synthetic.main.fragment_transaction.currentAccount
+import kotlinx.android.synthetic.main.fragment_transaction.description
+import kotlinx.android.synthetic.main.transaction_row.balanceBefore
+import kotlinx.android.synthetic.main.transaction_row.date
+import kotlinx.android.synthetic.main.transaction_row.otherAccount
 import me.manulorenzo.moneytransactions.R
 import me.manulorenzo.moneytransactions.data.model.ui.Account
 import me.manulorenzo.moneytransactions.data.model.ui.Transaction
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Currency
+import java.util.Locale
+
 
 class AccountFragment : Fragment() {
     private val accountViewModel: AccountViewModel by viewModel()
@@ -23,24 +35,72 @@ class AccountFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.main_fragment, container, false)
+    ): View = inflater.inflate(R.layout.fragment_account, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         accountViewModel.accountLiveData.observe(this, Observer { account: Account ->
-            accountBalance.text = account.balance
+            accountBalance.text = String.format(
+                getString(R.string.current_balance_placeholder),
+                account.balance + Currency.getInstance(Locale.getDefault()).symbol
+            )
             val adapter = account.transactions?.let { list: List<Transaction> ->
                 TransactionListAdapter(
                     transactionList = list,
                     clickListener = { transaction: Transaction ->
-                        fragmentManager?.beginTransaction()?.replace(
-                            R.id.container,
-                            TransactionFragment.newInstance(transaction),
-                            TransactionFragment.TAG
-                        )?.addToBackStack(TransactionFragment.TAG)?.commit()
+                        createSharedElementTransition(transaction)
                     })
             }
             transactionsRecyclerView.adapter = adapter
         })
+    }
+
+    private fun createSharedElementTransition(transaction: Transaction) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val autoTransition: Transition = TransitionInflater.from(activity)
+                .inflateTransition(R.transition.auto_transition)
+            val explodeTransition: Transition = TransitionInflater.from(activity)
+                .inflateTransition(android.R.transition.fade)
+            this.sharedElementReturnTransition = autoTransition
+            this.reenterTransition = autoTransition
+            this.exitTransition = explodeTransition
+
+            TransactionFragment.newInstance(transaction)
+                .also { transactionFragment: TransactionFragment ->
+                    transactionFragment.sharedElementEnterTransition =
+                        autoTransition
+                    transactionFragment.enterTransition = explodeTransition
+                    fragmentManager?.beginTransaction()?.replace(
+                        R.id.container,
+                        transactionFragment,
+                        TransactionFragment.TAG
+                    )?.addToBackStack(null)
+                        ?.addSharedElement(
+                            description,
+                            resources.getString(R.string.description_shared_element_transition_name)
+                        )
+                        ?.addSharedElement(
+                            otherAccount,
+                            resources.getString(R.string.other_account_shared_element_transition_name)
+                        )
+                        ?.addSharedElement(
+                            currentAccount,
+                            resources.getString(R.string.current_account_shared_element_transition_name)
+                        )
+                        ?.addSharedElement(
+                            date,
+                            resources.getString(R.string.date_shared_element_transition_name)
+                        )
+                        ?.addSharedElement(
+                            balanceBefore,
+                            resources.getString(R.string.balance_before_shared_element_transition_name)
+                        )
+                        ?.addSharedElement(
+                            balanceAfter,
+                            resources.getString(R.string.balance_after_shared_element_transition_name)
+                        )
+                        ?.commit()
+                }
+        }
     }
 }

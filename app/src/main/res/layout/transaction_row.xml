@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/description"
@@ -17,6 +16,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"
+            android:transitionName="@string/description_shared_element_transition_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Pizza" />
@@ -27,7 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Balance before"
+            android:text="@string/balance_before_placeholder"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:transitionName="@string/balance_before_shared_element_transition_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 
@@ -35,13 +39,14 @@
             android:id="@+id/balanceAfter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Balance after"
+            android:text="@string/balance_after_placeholder"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:transitionName="@string/balance_after_shared_element_transition_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/balanceBefore"
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 
         <TextView
@@ -50,7 +55,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/current_account"
+            android:text="@string/current_account_number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:transitionName="@string/current_account_shared_element_transition_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/balanceBefore" />
 
@@ -70,6 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:transitionName="@string/other_account_shared_element_transition_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/balanceAfter"
             tools:text="NL18ABNA0484869868" />
@@ -80,6 +89,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"
+            android:transitionName="@string/amount_shared_element_transition_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="30.00" />
@@ -92,6 +104,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:lines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:transitionName="@string/date_shared_element_transition_name"
             app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeTextType="uniform"

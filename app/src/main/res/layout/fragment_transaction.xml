@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/description"
@@ -17,6 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:transitionName="@string/description_shared_element_transition_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Pizza" />
@@ -27,7 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Balance before"
+            android:text="@string/balance_before_placeholder"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:transitionName="@string/balance_before_shared_element_transition_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 
@@ -38,7 +41,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Balance after"
+            android:text="@string/balance_after_placeholder"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:transitionName="@string/balance_after_shared_element_transition_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,38 +55,36 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/current_account"
+            android:text="@string/current_account_number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:transitionName="@string/current_account_shared_element_transition_name"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/balanceBefore" />
-
-        <TextView
-            android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/arrow"
-            app:layout_constraintBottom_toBottomOf="@+id/otherAccount"
-            app:layout_constraintEnd_toStartOf="@+id/otherAccount"
-            app:layout_constraintStart_toEndOf="@+id/currentAccount"
-            app:layout_constraintTop_toTopOf="@+id/otherAccount" />
 
         <TextView
             android:id="@+id/otherAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:transitionName="@string/other_account_shared_element_transition_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/balanceAfter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentAccount"
             tools:text="NL18ABNA0484869868" />
 
         <TextView
             android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:transitionName="@string/amount_shared_element_transition_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description"
             tools:text="30.00" />
 
         <TextView
@@ -91,14 +94,18 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:gravity="center"
             android:lines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:transitionName="@string/date_shared_element_transition_name"
             app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/otherAccount"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/otherAccount"
+            app:layout_constraintVertical_bias="1.0"
             tools:text="2018-05-13T18:19:00Z" />
 
         <androidx.constraintlayout.widget.Barrier

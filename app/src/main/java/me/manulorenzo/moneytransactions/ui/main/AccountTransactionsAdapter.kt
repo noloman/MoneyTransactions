@@ -40,11 +40,11 @@ open class TransactionViewHolder(itemView: View) :
         with(itemView) {
             this.setOnClickListener { clickListener.invoke(transaction) }
             this.balanceBefore.text = String.format(
-                itemView.resources.getString(R.string.balance_before),
+                itemView.resources.getString(R.string.balance_before_placeholder),
                 transaction.balanceBefore.toPlainString()
             )
             this.balanceAfter.text = String.format(
-                itemView.resources.getString(R.string.balance_after),
+                itemView.resources.getString(R.string.balance_after_placeholder),
                 transaction.balanceAfter.toPlainString()
             )
             this.amount.text = transaction.amount.toPlainString()
