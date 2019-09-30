@@ -1,6 +1,7 @@
 package me.manulorenzo.moneytransactions.ui.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
@@ -48,7 +49,7 @@ class AccountDataViewModelTest : AutoCloseKoinTest() {
     @Test
     fun `when getting an account it should show the expected values`() = runBlockingTest {
         fakeAccountData = moshiAccountDataAdapter.fromJson(json)
-        whenever(repository.getAccount()).thenReturn(fakeAccountData)
+        whenever(repository.getAccount()).doReturn(fakeAccountData)
 
         accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
         accountViewModel.accountLiveData.observeForever { account: Account ->
@@ -61,7 +62,7 @@ class AccountDataViewModelTest : AutoCloseKoinTest() {
     fun `when getting the total sum of all the transactions it should return the sum of them plus the account balance`() =
         runBlockingTest {
             fakeAccountData = moshiAccountDataAdapter.fromJson(json)
-            whenever(repository.getAccount()).thenReturn(fakeAccountData)
+            whenever(repository.getAccount()).doReturn(fakeAccountData)
 
             accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
             assertEquals("849.70", accountViewModel.getTransactionsSum(fakeAccountData))

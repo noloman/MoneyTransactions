@@ -8,6 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
+import com.squareup.moshi.Moshi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneytransactions.EspressoMatchers
@@ -15,7 +16,6 @@ import me.manulorenzo.moneytransactions.R
 import me.manulorenzo.moneytransactions.TestCoroutineContextProvider
 import me.manulorenzo.moneytransactions.data.model.ui.Account
 import me.manulorenzo.moneytransactions.data.repository.Repository
-import me.manulorenzo.moneytransactions.di.MoshiWrapper
 import me.manulorenzo.moneytransactions.util.CoroutineContextDelegate
 import me.manulorenzo.moneytransactions.util.CoroutineContextProvider
 import org.junit.After
@@ -40,7 +40,6 @@ class AccountFragmentTest {
     private lateinit var accountViewModel: AccountViewModel
     private var fakeAccount: Account? = null
     private val dataModule = module {
-        //            single { MoshiWrapper() }
         viewModel { AccountViewModel(get(), get()) }
     }
     private val coroutinesModule = module {
@@ -56,7 +55,7 @@ class AccountFragmentTest {
         loadKoinModules(listOf(dataModule, coroutinesModule))
         accountViewModel =
             AccountViewModel(repositoryMock, TestCoroutineContextProvider())
-        fakeAccount = MoshiWrapper().moshiAccountAdapter.fromJson(json)
+        fakeAccount = Moshi.Builder().build().adapter<Account>(Account::class.java).fromJson(json)
         `when`(accountViewModel.accountLiveData).thenReturn(MutableLiveData<Account>().apply {
             value = fakeAccount
         })

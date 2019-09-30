@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val dataModule = module {
-    single { MoshiWrapper() }
+    single { MoshiWrapper.moshiAccountDataAdapter }
     single {
         RepositoryImpl(
             get(),
