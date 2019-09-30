@@ -20,7 +20,6 @@ import java.util.Currency
 import java.util.Locale
 
 class TransactionFragment : Fragment() {
-
     companion object {
         val TAG = TransactionFragment::class.java.simpleName
         const val TRANSACTION_PARCELABLE_KEY = "transaction"

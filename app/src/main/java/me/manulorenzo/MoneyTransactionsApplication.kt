@@ -2,7 +2,6 @@ package me.manulorenzo
 
 import android.app.Application
 import android.os.StrictMode
-import com.jakewharton.threetenabp.AndroidThreeTen
 import me.manulorenzo.moneytransactions.BuildConfig
 import me.manulorenzo.moneytransactions.di.coroutinesModule
 import me.manulorenzo.moneytransactions.di.dataModule
@@ -22,7 +21,6 @@ class MoneyTransactionsApplication : Application() {
             StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build())
         }
         super.onCreate()
-        AndroidThreeTen.init(this)
         startKoin {
             androidLogger()
             androidContext(this@MoneyTransactionsApplication)

@@ -17,7 +17,7 @@ import java.math.BigDecimal
 import kotlin.coroutines.CoroutineContext
 
 class AccountViewModel(
-    @VisibleForTesting val repository: Repository,
+    val repository: Repository,
     private val coroutineContextProvider: CoroutineContextProvider
 ) : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext by CoroutineContextDelegate()

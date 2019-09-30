@@ -1,6 +1,7 @@
 package me.manulorenzo.moneytransactions.data
 
 import android.app.Application
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
@@ -18,7 +19,6 @@ import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
 import org.koin.test.mock.declareMock
-
 
 @ExperimentalCoroutinesApi
 class RepositoryTest : AutoCloseKoinTest() {
@@ -38,9 +38,9 @@ class RepositoryTest : AutoCloseKoinTest() {
 
     @Test
     fun `it should retrieve an account from the transactions json`() = runBlockingTest {
-        whenever(repository.getTransactionString()).thenReturn(json)
+        whenever(repository.getTransactionString()).doReturn(json)
 
-        fakeAccountData = MoshiWrapper.moshiAccountDataAdapter.fromJson(json)
+        fakeAccountData = MoshiWrapper().moshiAccountDataAdapter.fromJson(json)
         val expectedAccount = repository.getAccount()
 
         assertEquals(fakeAccountData, expectedAccount)
