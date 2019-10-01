@@ -93,7 +93,7 @@ class ExtensionsKtTest {
         ).account(BigDecimal("100.20"))
         val transactionList = fakeAccountData.transactions
 
-        val uatList =
+        val sutList =
             listOf(fakeTransaction).map(BigDecimal("100.20")) { transaction: Transaction, beforeBalance: BigDecimal, afterBalance: BigDecimal ->
                 Transaction(
                     transaction.amount,
@@ -104,6 +104,6 @@ class ExtensionsKtTest {
                     transaction.date
                 )
             }
-        assertEquals(transactionList, uatList)
+        assertEquals(transactionList, sutList)
     }
 }
