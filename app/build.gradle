@@ -46,7 +46,6 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
     implementation "org.koin:koin-android:2.0.1"
-    implementation "org.koin:koin-androidx-scope:2.0.1"
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.8.0"
@@ -69,12 +68,12 @@ dependencies {
         exclude group: 'com.jakewharton.threetenabp', module: 'threetenabp'
     }
     // debugImplementation because LeakCanary should only run in debug builds.
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
     debugImplementation('androidx.fragment:fragment-testing:1.1.0') {
         exclude group: 'androidx.test', module: 'core'
     }
