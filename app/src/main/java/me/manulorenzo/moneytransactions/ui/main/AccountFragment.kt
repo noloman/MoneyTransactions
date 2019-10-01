@@ -24,7 +24,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Currency
 import java.util.Locale
 
-
 class AccountFragment : Fragment() {
     private val accountViewModel: AccountViewModel by viewModel()
 
@@ -55,6 +54,9 @@ class AccountFragment : Fragment() {
         })
     }
 
+    /**
+     * Creates enter and exit fragment transition and commits the fragment transaction.
+     */
     private fun createSharedElementTransition(transaction: Transaction) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val autoTransition =

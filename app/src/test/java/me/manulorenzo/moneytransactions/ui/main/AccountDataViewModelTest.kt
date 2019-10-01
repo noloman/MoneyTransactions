@@ -13,7 +13,7 @@ import me.manulorenzo.moneytransactions.data.repository.Repository
 import me.manulorenzo.moneytransactions.di.coroutinesModule
 import me.manulorenzo.moneytransactions.di.dataModule
 import me.manulorenzo.moneytransactions.util.CoroutinesTestRule
-import me.manulorenzo.moneytransactions.util.TestCoroutineContextProvider
+import me.manulorenzo.moneytransactions.util.TestCoroutinesContextProvider
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -51,7 +51,7 @@ class AccountDataViewModelTest : AutoCloseKoinTest() {
         fakeAccountData = moshiAccountDataAdapter.fromJson(json)
         whenever(repository.getAccount()).doReturn(fakeAccountData)
 
-        accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
+        accountViewModel = AccountViewModel(repository, TestCoroutinesContextProvider())
         accountViewModel.accountLiveData.observeForever { account: Account ->
             assertEquals(fakeAccountData?.account, account.account)
         }
@@ -64,7 +64,7 @@ class AccountDataViewModelTest : AutoCloseKoinTest() {
             fakeAccountData = moshiAccountDataAdapter.fromJson(json)
             whenever(repository.getAccount()).doReturn(fakeAccountData)
 
-            accountViewModel = AccountViewModel(repository, TestCoroutineContextProvider())
+            accountViewModel = AccountViewModel(repository, TestCoroutinesContextProvider())
             assertEquals("849.70", accountViewModel.getTransactionsSum(fakeAccountData))
         }
 

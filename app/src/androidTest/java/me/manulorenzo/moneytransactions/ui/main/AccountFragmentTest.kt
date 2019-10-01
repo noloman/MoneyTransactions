@@ -11,13 +11,13 @@ import androidx.test.rule.ActivityTestRule
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import me.manulorenzo.moneytransactions.EspressoMatchers
 import me.manulorenzo.moneytransactions.R
-import me.manulorenzo.moneytransactions.TestCoroutineContextProvider
 import me.manulorenzo.moneytransactions.data.model.ui.Account
 import me.manulorenzo.moneytransactions.data.repository.Repository
 import me.manulorenzo.moneytransactions.util.CoroutineContextDelegate
 import me.manulorenzo.moneytransactions.util.CoroutineContextProvider
+import me.manulorenzo.moneytransactions.util.EspressoMatchers
+import me.manulorenzo.moneytransactions.util.TestCoroutinesContextProvider
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -54,7 +54,10 @@ class AccountFragmentTest {
         MockitoAnnotations.initMocks(this)
         loadKoinModules(listOf(dataModule, coroutinesModule))
         accountViewModel =
-            AccountViewModel(repositoryMock, TestCoroutineContextProvider())
+            AccountViewModel(
+                repositoryMock,
+                TestCoroutinesContextProvider()
+            )
         val json = javaClass.classLoader?.getResourceAsStream("transactions.json").toString()
         fakeAccount = Moshi.Builder().build().adapter<Account>(Account::class.java).fromJson(json)
         `when`(accountViewModel.accountLiveData).thenReturn(MutableLiveData<Account>().apply {

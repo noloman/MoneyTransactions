@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions
+package me.manulorenzo.moneytransactions.util
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

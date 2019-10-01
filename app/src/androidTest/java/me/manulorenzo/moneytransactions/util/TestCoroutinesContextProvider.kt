@@ -3,7 +3,7 @@ package me.manulorenzo.moneytransactions.util
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
-class TestCoroutineContextProvider : CoroutineContextProvider() {
+class TestCoroutinesContextProvider : CoroutineContextProvider() {
     override val main: CoroutineContext = Dispatchers.Unconfined
     override val io: CoroutineContext = Dispatchers.Unconfined
     override val default: CoroutineContext = Dispatchers.Unconfined
