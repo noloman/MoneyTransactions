@@ -6,6 +6,9 @@ jobs:
       - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
+    dependencies:
+      override:
+        - echo y | android update sdk --no-ui --all --filter build-tools-29.0.2,android-29
     steps:
       - checkout
       - restore_cache:
