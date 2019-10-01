@@ -15,7 +15,7 @@ import me.manulorenzo.moneytransactions.R
 import me.manulorenzo.moneytransactions.data.model.ui.Transaction
 import org.threeten.bp.format.DateTimeFormatter
 
-class TransactionListAdapter(
+class AccountTransactionsAdapter(
     private val transactionList: List<Transaction>,
     val clickListener: (Transaction) -> (Unit)
 ) : RecyclerView.Adapter<TransactionViewHolder>() {
