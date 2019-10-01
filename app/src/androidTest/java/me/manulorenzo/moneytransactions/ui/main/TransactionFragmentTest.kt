@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_transaction.description
 import kotlinx.android.synthetic.main.fragment_transaction.otherAccount
 import me.manulorenzo.moneytransactions.R
 import me.manulorenzo.moneytransactions.data.model.ui.Transaction
-import me.manulorenzo.moneytransactions.util.CoroutineContextDelegate
 import me.manulorenzo.moneytransactions.util.CoroutineContextProvider
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -41,7 +40,6 @@ class TransactionFragmentTest {
     }
     private val coroutinesModule = module {
         single { CoroutineContextProvider() }
-        single { CoroutineContextDelegate() }
     }
 
     @Before

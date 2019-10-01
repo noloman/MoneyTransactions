@@ -14,7 +14,6 @@ import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneytransactions.R
 import me.manulorenzo.moneytransactions.data.model.ui.Account
 import me.manulorenzo.moneytransactions.data.repository.Repository
-import me.manulorenzo.moneytransactions.util.CoroutineContextDelegate
 import me.manulorenzo.moneytransactions.util.CoroutineContextProvider
 import me.manulorenzo.moneytransactions.util.EspressoMatchers
 import me.manulorenzo.moneytransactions.util.TestCoroutinesContextProvider
@@ -44,7 +43,6 @@ class AccountFragmentTest {
     }
     private val coroutinesModule = module {
         single { CoroutineContextProvider() }
-        single { CoroutineContextDelegate() }
     }
     @get:Rule
     val activityRule = ActivityTestRule(AccountActivity::class.java, true, false)
