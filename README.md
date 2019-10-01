@@ -1,4 +1,8 @@
 # MoneyTransactions Android app
+
+<img src="https://raw.github.com/noloman/MoneyTransactions/master/account_screen.png" width=360px /> 
+<img src="https://raw.github.com/noloman/MoneyTransactions/master/transaction_screen.png" width=360px /> 
+
 Things to notice in the project:
 
 - The UI tests in the AccountFragmentTest don't work due to mocking problems:
