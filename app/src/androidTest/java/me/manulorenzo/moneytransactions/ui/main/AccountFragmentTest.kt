@@ -19,6 +19,7 @@ import me.manulorenzo.moneytransactions.util.EspressoMatchers
 import me.manulorenzo.moneytransactions.util.TestCoroutinesContextProvider
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -65,12 +66,14 @@ class AccountFragmentTest {
 
 
     @Test
+    @Ignore
     fun transactionsRecyclerView_shouldBeShown() = runBlockingTest {
         activityRule.launchActivity(null)
         onView(ViewMatchers.withId(R.id.transactionsRecyclerView)).check(matches(isDisplayed()))
     }
 
     @Test
+    @Ignore
     fun transactionsRecyclerView_shouldHaveFiveItems() = runBlockingTest {
         activityRule.launchActivity(null)
         onView(ViewMatchers.withId(R.id.transactionsRecyclerView)).check(
