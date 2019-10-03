@@ -44,7 +44,7 @@ class AccountFragment : Fragment() {
                 account.balance + Currency.getInstance(Locale.getDefault()).symbol
             )
             val adapter = account.transactions?.let { list: List<Transaction> ->
-                TransactionListAdapter(
+                AccountTransactionsAdapter(
                     transactionList = list,
                     clickListener = { transaction: Transaction ->
                         createSharedElementTransition(transaction)
