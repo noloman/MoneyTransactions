@@ -1,4 +1,5 @@
 # MoneyTransactions Android app
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge&style=flat)](https://actions-badge.atrox.dev/atrox/sync-dotenv/goto)
 
 <img src="https://raw.github.com/noloman/MoneyTransactions/master/account_screen.png" width=360px /> 
 <img src="https://raw.github.com/noloman/MoneyTransactions/master/transaction_screen.png" width=360px /> 
