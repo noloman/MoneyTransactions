@@ -38,12 +38,12 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        accountViewModel.accountLiveData.observe(this, Observer { account: Account ->
+        accountViewModel.accountLiveData.observe(this, Observer { account: Account? ->
             accountBalance.text = String.format(
                 getString(R.string.current_balance_placeholder),
-                account.balance + Currency.getInstance(Locale.getDefault()).symbol
+                account?.balance + Currency.getInstance(Locale.getDefault()).symbol
             )
-            val adapter = account.transactions?.let { list: List<Transaction> ->
+            val adapter = account?.transactions?.let { list: List<Transaction> ->
                 AccountTransactionsAdapter(
                     transactionList = list,
                     clickListener = { transaction: Transaction ->

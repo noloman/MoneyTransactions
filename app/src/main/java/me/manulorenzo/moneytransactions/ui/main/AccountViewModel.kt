@@ -18,8 +18,8 @@ class AccountViewModel(
     val repository: Repository,
     private val coroutineContextProvider: CoroutineContextProvider
 ) : ViewModel() {
-    val accountLiveData: MutableLiveData<Account> by lazy {
-        MutableLiveData<Account>().also { liveData: MutableLiveData<Account> ->
+    val accountLiveData: MutableLiveData<Account?> by lazy {
+        MutableLiveData<Account?>().also { liveData: MutableLiveData<Account?> ->
             viewModelScope.launch(coroutineContextProvider.io) {
                 val accountData: AccountData? = repository.getAccount()
                 val initialBalance = BigDecimal(getTransactionsSum(accountData))
