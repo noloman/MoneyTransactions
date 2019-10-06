@@ -20,5 +20,5 @@ jobs:
       run: ./gradlew build --stacktrace
     - name: Run Unit tests
       run: ./gradlew testDebugUnitTest
-    - name: Run UI tests
-      run: ./gradlew connectedAndroidTest
+    - name: Run UI Tests
+      uses: "vgaidarji/android-github-actions/emulator@v1.0.0"
