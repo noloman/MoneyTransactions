@@ -1,5 +1,5 @@
 # MoneyTransactions Android app
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge&style=flat)](https://www.github.com/noloman/MoneyTransactions)
+[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge&label=build&logo=none)](https://github.com/noloman/MoneyTransactions/actions)
 [![CircleCI](https://circleci.com/gh/noloman/MoneyTransactions.svg?style=svg)](https://circleci.com/gh/noloman/MoneyTransactions)
 
 <img src="https://raw.github.com/noloman/MoneyTransactions/master/account_screen.png" width=360px /> 
