@@ -52,8 +52,8 @@ class AccountDataViewModelTest : AutoCloseKoinTest() {
         whenever(repository.getAccount()).doReturn(fakeAccountData)
 
         accountViewModel = AccountViewModel(repository, TestCoroutinesContextProvider())
-        accountViewModel.accountLiveData.observeForever { account: Account ->
-            assertEquals(fakeAccountData?.account, account.account)
+        accountViewModel.accountLiveData.observeForever { account: Account? ->
+            assertEquals(fakeAccountData?.account, account?.account)
         }
         verify(accountViewModel.repository).getAccount()
     }
