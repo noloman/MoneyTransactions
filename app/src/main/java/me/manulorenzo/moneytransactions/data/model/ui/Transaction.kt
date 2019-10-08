@@ -7,9 +7,9 @@ import java.math.BigDecimal
 
 @Parcelize
 data class Transaction(
-    var amount: BigDecimal,
-    var balanceBefore: BigDecimal,
-    var balanceAfter: BigDecimal,
+    val amount: BigDecimal,
+    val balanceBefore: BigDecimal,
+    val balanceAfter: BigDecimal,
     val description: String,
     val otherAccount: String,
     val date: LocalDateTime

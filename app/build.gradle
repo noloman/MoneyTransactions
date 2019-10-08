@@ -64,7 +64,7 @@ dependencies {
     androidTestImplementation "androidx.test:runner:1.2.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
     androidTestImplementation "junit:junit:4.12"
-    androidTestImplementation('org.threeten:threetenbp:1.3.2') {
+    androidTestImplementation('org.threeten:threetenbp:1.4.0') {
         exclude group: 'com.jakewharton.threetenabp', module: 'threetenabp'
     }
     // debugImplementation because LeakCanary should only run in debug builds.
