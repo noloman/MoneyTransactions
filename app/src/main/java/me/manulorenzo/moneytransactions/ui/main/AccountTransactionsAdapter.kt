@@ -17,7 +17,7 @@ import org.threeten.bp.format.DateTimeFormatter
 
 class AccountTransactionsAdapter(
     private val transactionList: List<Transaction>,
-    val clickListener: (Transaction) -> (Unit)
+    private val clickListener: (Transaction) -> (Unit)
 ) : RecyclerView.Adapter<TransactionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
         val view =
