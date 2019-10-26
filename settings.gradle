@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':libraries:data-account', ':libraries:data-transactions', ':libraries:repository', ':features:account', ':features:transactions', ':libraries:presentation'
 rootProject.name='MoneyTransactions'
