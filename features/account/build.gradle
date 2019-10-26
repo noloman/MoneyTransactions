@@ -29,39 +29,42 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':libraries:presentation')
-    testImplementation project(':libraries:presentation')
-    androidTestImplementation project(':libraries:presentation')
-    implementation project(':libraries:data-account')
-    testImplementation project(':libraries:data-account')
-    implementation project(':libraries:data-transactions')
-    testImplementation project(':libraries:data-transactions')
-    implementation project(':libraries:repository')
+    implementation project(Modules.presentation)
+    androidTestImplementation project(Modules.presentation)
+    testImplementation project(Modules.presentation)
 
-    implementation "org.koin:koin-android:2.0.1"
-    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
-    testImplementation "org.koin:koin-test:2.0.1"
-    kaptTest "com.squareup.moshi:moshi-kotlin-codegen:1.8.0"
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation project(Modules.data_account)
+    testImplementation project(Modules.data_account)
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation "android.arch.core:core-testing:1.1.1"
-    testImplementation "com.squareup.moshi:moshi-kotlin:1.8.0"
-    testImplementation "com.squareup.moshi:moshi-adapters:1.8.0"
+    implementation project(Modules.data_transactions)
+    testImplementation project(Modules.data_transactions)
 
-    androidTestImplementation 'org.mockito:mockito-android:3.0.0'
-    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation "android.arch.core:core-testing:1.1.1"
-    androidTestImplementation "junit:junit:4.12"
-    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
+    implementation project(Modules.repository)
+
+    implementation Libraries.koinAndroid
+    implementation Libraries.koinViewModel
+    testImplementation TestLibraries.koinTest
+    kaptTest Libraries.moshiCodegen
+    implementation Libraries.threeTenAbpJakeWharton
+    implementation SupportLibraries.recyclerview
+    implementation Libraries.lifecycleExtensions
+    implementation Libraries.lifecycleViewModel
+    implementation Libraries.kotlin
+    implementation Libraries.coroutinesCore
+    implementation SupportLibraries.appcompat
+    implementation Libraries.ktx
+
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.lifecycleTesting
+    testImplementation Libraries.moshiKotlin
+    testImplementation Libraries.moshiAdapters
+
+    androidTestImplementation TestLibraries.mockitoInline
+    androidTestImplementation TestLibraries.mockitoKotlin
+    androidTestImplementation TestLibraries.extJunit
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.lifecycleTesting
+    androidTestImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.coroutinesTest
+    androidTestImplementation TestLibraries.extRules
 }
