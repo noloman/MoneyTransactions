@@ -54,6 +54,10 @@ object Versions {
 
 object Plugins {
     const val gradleVersions = "com.github.ben-manes.versions"
+    const val androidApplication = "com.android.application"
+    const val kotlinAndroid = "kotlin-android"
+    const val kotlinAndroidExtensions = "kotlin-android-extensions"
+    const val kotlinKapt = "kotlin-kapt"
 }
 
 object Libraries {
