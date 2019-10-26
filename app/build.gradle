@@ -13,11 +13,11 @@ android {
         experimental = true
     }
     defaultConfig {
-        applicationId "me.manulorenzo.moneytransactions"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Releases.versionCode
+        versionName Releases.versionName
         testInstrumentationRunner "me.manulorenzo.moneytransactions.TestAppRunner"
     }
     buildTypes {
