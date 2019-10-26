@@ -33,12 +33,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(":libraries:data-account")
-    implementation project(':libraries:data-transactions')
-    implementation project(":libraries:repository")
-    implementation project(":libraries:presentation")
-    implementation project(":features:account")
-    implementation project(":features:transactions")
+    implementation project(Modules.data_account)
+    implementation project(Modules.data_transactions)
+    implementation project(Modules.repository)
+    implementation project(Modules.presentation)
+    implementation project(Modules.features_account)
+    implementation project(Modules.features_transactions)
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
     implementation "org.koin:koin-android:2.0.1"
