@@ -34,8 +34,6 @@ object Versions {
     const val targetSdkVersion = 29
     const val compileSdkVersion = 29
     const val buildToolsVersion = "29.0.2"
-    const val support_lib = "27.0.2"
-    const val rxjava = "2.1.9"
     const val gradle = "3.4.2"
     const val threeTenAbpJakeWharton = "1.2.1"
     const val appcompat = "1.0.2"
@@ -51,6 +49,7 @@ object Versions {
     const val junit = "4.12"
     const val mockitoKotlin = "2.1.0"
     const val mockitoInline = "3.0.0"
+    const val coroutinesCore = "1.3.2"
 }
 
 object Plugins {
@@ -64,8 +63,9 @@ object Libraries {
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val moshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.moshi}"
     const val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
-    val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
-    val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+    const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val lifecycleViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleViewModel}"
     const val leakCanaryAndroid =
         "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
     const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
@@ -81,9 +81,8 @@ object Libraries {
 
 object SupportLibraries {
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    val design = "com.google.android.material:material:${Versions.design}"
     const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
-    val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val legacy = "androidx.legacy:legacy-support-v4:${Versions.legacy}"
@@ -92,7 +91,7 @@ object SupportLibraries {
 object TestLibraries {
     const val junit = "junit:junit:${Versions.junit}"
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
-    val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+    const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
     const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
     const val koinTest = "org.koin:koin-test:${Versions.koin}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
