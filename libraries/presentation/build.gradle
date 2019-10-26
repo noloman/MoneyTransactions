@@ -4,8 +4,8 @@ apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
     sourceSets {
         test {
             java.srcDirs += "$projectDir/src/testShared"
@@ -16,10 +16,10 @@ android {
         }
     }
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Releases.versionCode
+        versionName Releases.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
