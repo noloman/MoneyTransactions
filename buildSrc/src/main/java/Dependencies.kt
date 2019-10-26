@@ -58,6 +58,7 @@ object Plugins {
     const val kotlinAndroid = "kotlin-android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val kotlinKapt = "kotlin-kapt"
+    const val androidLibrary = "com.android.library"
 }
 
 object Libraries {
