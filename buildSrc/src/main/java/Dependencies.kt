@@ -18,6 +18,8 @@ object Releases {
 }
 
 object Versions {
+    const val gradleVersions = "0.27.0"
+    const val lifecycleViewModel = "2.1.0"
     const val legacy = "1.0.0"
     const val fragmentTesting = "1.1.0"
     const val extJunit = "1.1.1"
@@ -41,9 +43,7 @@ object Versions {
     const val cardview = "1.0.0"
     const val recyclerview = "1.0.0"
     const val ktx = "1.0.0-alpha1"
-    const val kotlin = "1.3.41"
-    const val retrofit = "2.6.0"
-    const val loggingInterceptor = "4.0.0"
+    const val kotlin = "1.3.50"
     const val moshi = "1.8.0"
     const val lifecycle = "2.0.0"
     const val leakCanary = "2.0-beta-3"
@@ -53,8 +53,13 @@ object Versions {
     const val mockitoInline = "3.0.0"
 }
 
+object Plugins {
+    const val gradleVersions = "com.github.ben-manes.versions"
+}
+
 object Libraries {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    const val gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
     const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val moshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.moshi}"
@@ -67,6 +72,11 @@ object Libraries {
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     const val threeTenAbpJakeWharton =
         "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbpJakeWharton}"
+    const val coroutinesCore =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCore}"
+    const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
+    const val gradleVersions =
+        "com.github.ben-manes:gradle-versions-plugin:${Versions.gradleVersions}"
 }
 
 object SupportLibraries {
