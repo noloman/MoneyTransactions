@@ -41,6 +41,9 @@ dependencies {
     implementation project(Modules.features_account)
     implementation project(Modules.features_transactions)
 
+    implementation Libraries.navigationKotlin
+    implementation Libraries.navigationUiKotlin
+    implementation Libraries.safeArgsNavigation
     implementation Libraries.threeTenAbpJakeWharton
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
