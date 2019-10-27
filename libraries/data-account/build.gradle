@@ -29,7 +29,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(Modules.data_transactions)
+    implementation project(Modules.data_transaction)
 
     implementation Libraries.koinAndroid
     implementation Libraries.kotlin
