@@ -9,6 +9,16 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/account" />
+            <option value="$PROJECT_DIR$/features/transactions" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/data-account" />
+            <option value="$PROJECT_DIR$/libraries/data-transactions" />
+            <option value="$PROJECT_DIR$/libraries/navigation" />
+            <option value="$PROJECT_DIR$/libraries/presentation" />
+            <option value="$PROJECT_DIR$/libraries/repository" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
