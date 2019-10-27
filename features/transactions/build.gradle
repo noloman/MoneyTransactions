@@ -1,6 +1,7 @@
 apply plugin: Plugins.androidLibrary
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
+
 android {
     compileSdkVersion Versions.compileSdkVersion
     buildToolsVersion Versions.buildToolsVersion
@@ -29,8 +30,10 @@ dependencies {
     implementation project(Modules.data_transactions)
     implementation Libraries.kotlin
     implementation Libraries.threeTenAbpJakeWharton
-    implementation SupportLibraries.appcompat
     implementation Libraries.ktx
+    implementation SupportLibraries.constraintLayout
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.material
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore

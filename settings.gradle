@@ -1,2 +1,1 @@
-include Modules.app, Modules.data_account, Modules.data_transactions, Modules.repository, Modules.features_account, Modules.features_transactions, Modules.presentation
-rootProject.name = 'MoneyTransactions'
+include Modules.app, Modules.data_account, Modules.data_transactions, Modules.repository, Modules.features_account, Modules.features_transactions, Modules.presentation, Modules.navigation

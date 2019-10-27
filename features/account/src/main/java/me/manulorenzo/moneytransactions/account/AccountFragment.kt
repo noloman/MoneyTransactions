@@ -1,18 +1,17 @@
 package me.manulorenzo.moneytransactions.account
 
-import android.os.Build
 import android.os.Bundle
-import android.transition.Transition
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_account.accountBalance
 import kotlinx.android.synthetic.main.fragment_account.transactionsRecyclerView
 import me.manulorenzo.moneytransactions.data_transaction.Transaction
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import me.manulorenzo.moneytransactions.navigation.Actions
+import org.koin.androidx.viewmodel.ext.viewModel
 import java.util.Currency
 import java.util.Locale
 
@@ -41,63 +40,15 @@ class AccountFragment : Fragment() {
                     AccountTransactionsAdapter(
                         transactionList = list,
                         clickListener = { transaction: Transaction ->
-                            createSharedElementTransition(transaction)
+                            activity?.startActivity(
+                                Actions.openTransactionsIntent(
+                                    activity as FragmentActivity,
+                                    transaction
+                                )
+                            )
                         })
                 }
                 transactionsRecyclerView.adapter = adapter
             })
-    }
-
-    /**
-     * Creates enter and exit fragment transition and commits the fragment transaction.
-     */
-    private fun createSharedElementTransition(transaction: Transaction) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val autoTransition =
-                TransitionInflater.from(activity).inflateTransition(android.R.transition.fade)
-            val slideRight: Transition = TransitionInflater.from(activity)
-                .inflateTransition(android.R.transition.slide_right)
-            val slideLeft: Transition = TransitionInflater.from(activity)
-                .inflateTransition(android.R.transition.slide_left)
-            this.sharedElementReturnTransition = autoTransition
-            this.exitTransition = slideLeft
-            // TODO Start new TransactionActivity so that this would load the TransactionFragment
-//            TransactionFragment.newInstance(transaction)
-//                .also { transactionFragment: TransactionFragment ->
-//                    transactionFragment.sharedElementEnterTransition =
-//                        autoTransition
-//                    transactionFragment.enterTransition = slideRight
-//                    fragmentManager?.beginTransaction()
-//                        ?.setReorderingAllowed(true)
-//                        ?.replace(
-//                            R.id.container, transactionFragment, TransactionFragment.TAG
-//                        )?.addToBackStack(null)
-//                        ?.addSharedElement(
-//                            description,
-//                            resources.getString(R.string.description_shared_element_transition_name)
-//                        )
-//                        ?.addSharedElement(
-//                            otherAccount,
-//                            resources.getString(R.string.other_account_shared_element_transition_name)
-//                        )
-//                        ?.addSharedElement(
-//                            currentAccount,
-//                            resources.getString(R.string.current_account_shared_element_transition_name)
-//                        )
-//                        ?.addSharedElement(
-//                            date,
-//                            resources.getString(R.string.date_shared_element_transition_name)
-//                        )
-//                        ?.addSharedElement(
-//                            balanceBefore,
-//                            resources.getString(R.string.balance_before_shared_element_transition_name)
-//                        )
-//                        ?.addSharedElement(
-//                            balanceAfter,
-//                            resources.getString(R.string.balance_after_shared_element_transition_name)
-//                        )
-//                        ?.commit()
-//                }
-        }
     }
 }

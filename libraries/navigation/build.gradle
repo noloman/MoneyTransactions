@@ -1,18 +1,16 @@
-apply plugin: Plugins.androidLibrary
-apply plugin: Plugins.kotlinAndroid
-apply plugin: Plugins.kotlinAndroidExtensions
-apply plugin: Plugins.kotlinKapt
-
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion Versions.compileSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
 
     defaultConfig {
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
-        versionCode Releases.versionCode
-        versionName Releases.versionName
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -29,16 +27,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(Modules.data_transactions)
-
-    implementation Libraries.koinAndroid
     implementation Libraries.kotlin
-    implementation Libraries.coroutinesCore
     implementation SupportLibraries.appcompat
     implementation Libraries.ktx
-    implementation Libraries.moshiKotlin
-    implementation Libraries.moshiAdapters
-    kapt Libraries.moshiCodegen
     testImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore

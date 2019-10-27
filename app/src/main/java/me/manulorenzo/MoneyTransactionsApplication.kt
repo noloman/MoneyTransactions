@@ -2,7 +2,9 @@ package me.manulorenzo
 
 import android.app.Application
 import android.os.StrictMode
+import di.accountViewModelModule
 import me.manulorenzo.moneytransactions.BuildConfig
+import me.manulorenzo.moneytransactions.data_account.di.moshiModule
 import me.manulorenzo.moneytransactions.presentation.di.coroutinesModule
 import me.manulorenzo.moneytransactions.repository.di.repositoryModule
 import org.koin.android.ext.koin.androidContext
@@ -24,7 +26,14 @@ class MoneyTransactionsApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MoneyTransactionsApplication)
-            modules(listOf(repositoryModule, coroutinesModule))
+            modules(
+                listOf(
+                    repositoryModule,
+                    coroutinesModule,
+                    accountViewModelModule,
+                    moshiModule
+                )
+            )
         }
     }
 }
