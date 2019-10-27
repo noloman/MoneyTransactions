@@ -6,11 +6,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
-import kotlinx.android.synthetic.main.fragment_transaction.amount
-import kotlinx.android.synthetic.main.fragment_transaction.balanceAfter
-import kotlinx.android.synthetic.main.fragment_transaction.balanceBefore
-import kotlinx.android.synthetic.main.fragment_transaction.description
-import kotlinx.android.synthetic.main.fragment_transaction.otherAccount
 import me.manulorenzo.main.MainActivity
 import me.manulorenzo.moneytransactions.R
 import me.manulorenzo.moneytransactions.data_transaction.Transaction

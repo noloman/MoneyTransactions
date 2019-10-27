@@ -5,10 +5,10 @@ object ApplicationId {
 object Modules {
     const val app = ":app"
     const val data_account = ":libraries:data-account"
-    const val data_transactions = ":libraries:data-transactions"
+    const val data_transaction = ":libraries:data-transaction"
     const val repository = ":libraries:repository"
     const val features_account = ":features:account"
-    const val features_transactions = ":features:transactions"
+    const val features_transaction = ":features:transaction"
     const val presentation = ":libraries:presentation"
     const val navigation = ":libraries:navigation"
 }
