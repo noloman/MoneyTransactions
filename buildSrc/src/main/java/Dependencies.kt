@@ -10,6 +10,7 @@ object Modules {
     const val features_account = ":features:account"
     const val features_transactions = ":features:transactions"
     const val presentation = ":libraries:presentation"
+    const val navigation = ":libraries:navigation"
 }
 
 object Releases {
@@ -18,8 +19,6 @@ object Releases {
 }
 
 object Versions {
-    const val safeArgsNavigation = "2.1.0"
-    const val navigationKotlin = "2.1.0"
     const val gradleVersions = "0.27.0"
     const val lifecycleViewModel = "2.1.0"
     const val legacy = "1.0.0"
@@ -84,12 +83,6 @@ object Libraries {
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val gradleVersions =
         "com.github.ben-manes:gradle-versions-plugin:${Versions.gradleVersions}"
-    const val navigationKotlin =
-        "androidx.navigation:navigation-fragment-ktx:${Versions.navigationKotlin}"
-    const val navigationUiKotlin =
-        "androidx.navigation:navigation-ui-ktx:${Versions.navigationKotlin}"
-    const val safeArgsNavigation =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.safeArgsNavigation}"
 }
 
 object SupportLibraries {
