@@ -19,6 +19,7 @@ object Releases {
 }
 
 object Versions {
+    const val material = "1.0.0"
     const val gradleVersions = "0.27.0"
     const val lifecycleViewModel = "2.1.0"
     const val legacy = "1.0.0"
@@ -92,6 +93,7 @@ object SupportLibraries {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val legacy = "androidx.legacy:legacy-support-v4:${Versions.legacy}"
+    const val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object TestLibraries {
