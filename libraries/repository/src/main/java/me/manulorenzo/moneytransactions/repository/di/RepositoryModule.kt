@@ -1,14 +1,14 @@
 package me.manulorenzo.moneytransactions.repository.di
 
+import me.manulorenzo.moneytransactions.repository.Repository
+import me.manulorenzo.moneytransactions.repository.RepositoryImpl
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    //        single { MoshiWrapper.moshiAccountDataAdapter }
     single {
-        me.manulorenzo.moneytransactions.repository.RepositoryImpl(
+        RepositoryImpl(
             get(),
             get()
-        ) as me.manulorenzo.moneytransactions.repository.Repository
+        ) as Repository
     }
-//        viewModel { AccountViewModel(get(), get()) }
 }
