@@ -1,1 +1,15 @@
-<manifest package="me.manulorenzo.moneytransactions.transactions" />
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.manulorenzo.moneytransactions.transactions">
+
+    <application>
+        <activity
+            android:name=".TransactionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="me.manulorenzo.moneytransactions.transaction.open" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
