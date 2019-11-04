@@ -38,7 +38,7 @@ object Versions {
     const val buildToolsVersion = "29.0.2"
     const val gradle = "3.4.2"
     const val threeTenAbpJakeWharton = "1.2.1"
-    const val appcompat = "1.0.2"
+    const val appcompat = "1.1.0"
     const val design = "1.0.0"
     const val cardview = "1.0.0"
     const val recyclerview = "1.0.0"
