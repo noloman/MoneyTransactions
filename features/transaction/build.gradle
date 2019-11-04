@@ -36,7 +36,6 @@ dependencies {
     implementation SupportLibraries.material
     testImplementation TestLibraries.junit
 
-//    androidTestImplementation project(Modules.presentation)
     androidTestImplementation TestLibraries.extRules
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore
