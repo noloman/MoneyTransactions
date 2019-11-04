@@ -37,8 +37,8 @@ dependencies {
     implementation project(Modules.data_account)
     testImplementation project(Modules.data_account)
 
-    implementation project(Modules.data_transactions)
-    testImplementation project(Modules.data_transactions)
+    implementation project(Modules.data_transaction)
+    testImplementation project(Modules.data_transaction)
 
     implementation project(Modules.repository)
 

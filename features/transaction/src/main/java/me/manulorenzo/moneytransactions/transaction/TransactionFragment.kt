@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions.transactions
+package me.manulorenzo.moneytransactions.transaction
 
 import android.os.Bundle
 import android.view.LayoutInflater

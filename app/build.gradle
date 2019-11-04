@@ -35,11 +35,11 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(Modules.data_account)
-    implementation project(Modules.data_transactions)
+    implementation project(Modules.data_transaction)
     implementation project(Modules.repository)
     implementation project(Modules.presentation)
     implementation project(Modules.features_account)
-    implementation project(Modules.features_transactions)
+    implementation project(Modules.features_transaction)
 
     implementation Libraries.threeTenAbpJakeWharton
     implementation Libraries.koinAndroid

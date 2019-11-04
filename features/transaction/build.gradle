@@ -27,7 +27,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(Modules.data_transactions)
+    implementation project(Modules.data_transaction)
     implementation Libraries.kotlin
     implementation Libraries.threeTenAbpJakeWharton
     implementation Libraries.ktx
@@ -35,6 +35,10 @@ dependencies {
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.material
     testImplementation TestLibraries.junit
+
+//    androidTestImplementation project(Modules.presentation)
+    androidTestImplementation TestLibraries.extRules
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.fragmentTesting
 }

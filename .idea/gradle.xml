@@ -12,10 +12,10 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/account" />
-            <option value="$PROJECT_DIR$/features/transactions" />
+            <option value="$PROJECT_DIR$/features/transaction" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/data-account" />
-            <option value="$PROJECT_DIR$/libraries/data-transactions" />
+            <option value="$PROJECT_DIR$/libraries/data-transaction" />
             <option value="$PROJECT_DIR$/libraries/navigation" />
             <option value="$PROJECT_DIR$/libraries/presentation" />
             <option value="$PROJECT_DIR$/libraries/repository" />
