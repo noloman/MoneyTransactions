@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions.presentation
+package me.manulorenzo.moneytransactions.presentation.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
