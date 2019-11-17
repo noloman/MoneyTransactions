@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_transaction.otherAccount
 import me.manulorenzo.moneytransactions.data_transaction.Transaction
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,10 +27,6 @@ import java.util.Locale
 class TransactionFragmentTest {
     @get:Rule
     val activityRule = ActivityTestRule(TransactionActivity::class.java, true, false)
-
-    @Before
-    fun setup() {
-    }
 
     @Test
     fun whenFragmentIsInitializedWithTransaction_itShouldShowTheFields() {

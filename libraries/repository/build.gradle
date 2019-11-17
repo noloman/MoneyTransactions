@@ -31,6 +31,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Modules.data_account)
     implementation project(Modules.data_transaction)
+    implementation project(Modules.core)
 
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
@@ -47,4 +48,8 @@ dependencies {
     testImplementation TestLibraries.coroutinesTest
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore
+}
+
+kapt {
+    useBuildCache = true
 }

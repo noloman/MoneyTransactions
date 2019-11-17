@@ -9,6 +9,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneytransactions.data_account.AccountData
 import me.manulorenzo.moneytransactions.repository.di.repositoryModule
+import me.manulorenzo.moneytransactions.shared.di.moshiAccountDataAdapterModule
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -22,14 +23,14 @@ import org.koin.test.mock.declareMock
 class RepositoryTest : AutoCloseKoinTest() {
     private val context: Application = mock()
     private val repository: Repository by inject()
-    private val moshiWrapperAdapter: JsonAdapter<AccountData> by inject()
     private var fakeAccountData: AccountData? = null
+    private val moshiAccountDataAdapter: JsonAdapter<AccountData> by inject()
 
     @Before
     fun setup() {
         startKoin {
             androidContext(context)
-            modules(repositoryModule)
+            modules(listOf(repositoryModule, moshiAccountDataAdapterModule))
         }
         declareMock<Repository>()
         declareMock<JsonAdapter<AccountData>>()
@@ -40,7 +41,7 @@ class RepositoryTest : AutoCloseKoinTest() {
         val json = javaClass.classLoader?.getResourceAsStream("transactions.json").toString()
         whenever(repository.getTransactionString()).doReturn(json)
 
-        fakeAccountData = moshiWrapperAdapter.fromJson(json)
+        fakeAccountData = moshiAccountDataAdapter.fromJson(json)
         val expectedAccount = repository.getAccount()
 
         assertEquals(fakeAccountData, expectedAccount)

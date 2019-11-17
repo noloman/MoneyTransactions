@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_account.accountBalance
 import kotlinx.android.synthetic.main.fragment_account.transactionsRecyclerView
 import me.manulorenzo.moneytransactions.data_transaction.Transaction
 import me.manulorenzo.moneytransactions.navigation.Actions
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Currency
 import java.util.Locale
 

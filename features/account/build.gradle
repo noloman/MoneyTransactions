@@ -30,8 +30,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Modules.navigation)
+
     implementation project(Modules.presentation)
-    androidTestImplementation project(Modules.presentation)
     testImplementation project(Modules.presentation)
 
     implementation project(Modules.data_account)
@@ -42,9 +42,17 @@ dependencies {
 
     implementation project(Modules.repository)
 
+    implementation project(Modules.core)
+    testImplementation project(Modules.core)
+    androidTestImplementation project(Modules.core)
+
+    implementation SupportLibraries.constraintLayout
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
     testImplementation TestLibraries.koinTest
+    androidTestImplementation Libraries.koinViewModel
+    androidTestImplementation(TestLibraries.koinTest) { exclude group: 'org.mockito' }
+//    androidTestImplementation 'org.mockito:mockito-android:3.1.0'
     kaptTest Libraries.moshiCodegen
     implementation Libraries.threeTenAbpJakeWharton
     implementation SupportLibraries.recyclerview
@@ -54,13 +62,21 @@ dependencies {
     implementation Libraries.coroutinesCore
     implementation SupportLibraries.appcompat
     implementation Libraries.ktx
+    implementation Libraries.kotlinReflect
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.lifecycleTesting
     testImplementation Libraries.moshiKotlin
     testImplementation Libraries.moshiAdapters
+    testImplementation TestLibraries.mockitoInline
+    testImplementation TestLibraries.mockitoKotlin
+    testImplementation TestLibraries.extJunit
+    testImplementation TestLibraries.espressoCore
+    testImplementation TestLibraries.lifecycleTesting
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.coroutinesTest
+    testImplementation TestLibraries.extRules
 
-    androidTestImplementation TestLibraries.mockitoInline
     androidTestImplementation TestLibraries.mockitoKotlin
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore
@@ -68,4 +84,12 @@ dependencies {
     androidTestImplementation TestLibraries.junit
     androidTestImplementation TestLibraries.coroutinesTest
     androidTestImplementation TestLibraries.extRules
+    androidTestImplementation TestLibraries.dexMakerMockitoInline
+    androidTestImplementation Libraries.kotlinReflect
+    kaptAndroidTest Libraries.moshiCodegen
+    androidTestImplementation Libraries.moshiKotlin
+}
+
+kapt {
+    useBuildCache = true
 }

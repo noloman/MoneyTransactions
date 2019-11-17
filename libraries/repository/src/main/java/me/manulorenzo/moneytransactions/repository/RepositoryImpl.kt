@@ -2,13 +2,14 @@ package me.manulorenzo.moneytransactions.repository
 
 import android.content.Context
 import com.squareup.moshi.JsonAdapter
+import me.manulorenzo.moneytransactions.data_account.AccountData
 import java.io.InputStream
 
 class RepositoryImpl(
     private val context: Context,
-    private val moshiJsonAccountDataAdapter: JsonAdapter<me.manulorenzo.moneytransactions.data_account.AccountData>
+    private val moshiJsonAccountDataAdapter: JsonAdapter<AccountData>
 ) : Repository {
-    override suspend fun getAccount(): me.manulorenzo.moneytransactions.data_account.AccountData? =
+    override suspend fun getAccount(): AccountData? =
         moshiJsonAccountDataAdapter.fromJson(getTransactionString())
 
     override suspend fun getTransactionString(fileName: String): String {

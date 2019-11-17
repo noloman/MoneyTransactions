@@ -10,8 +10,8 @@ import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
 import me.manulorenzo.moneytransactions.data_transaction.TransactionData
 import me.manulorenzo.moneytransactions.presentation.CoroutinesContextProvider
-import me.manulorenzo.moneytransactions.presentation.account
 import me.manulorenzo.moneytransactions.repository.Repository
+import me.manulorenzo.moneytransactions.shared.account
 import java.math.BigDecimal
 
 class AccountViewModel(

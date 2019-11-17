@@ -41,3 +41,7 @@ dependencies {
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore
 }
+
+kapt {
+    useBuildCache = true
+}
