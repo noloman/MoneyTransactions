@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.testing.launchFragment
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.LargeTest
 import androidx.test.filters.MediumTest
 import androidx.test.rule.ActivityTestRule
 import kotlinx.android.synthetic.main.fragment_transaction.amount
@@ -25,7 +24,6 @@ import java.util.Locale
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)
-@LargeTest
 class TransactionFragmentTest {
     @get:Rule
     val activityRule = ActivityTestRule(TransactionActivity::class.java, true, false)

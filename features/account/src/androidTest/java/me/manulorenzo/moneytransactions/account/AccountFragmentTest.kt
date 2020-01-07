@@ -7,7 +7,6 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.LargeTest
 import androidx.test.filters.MediumTest
 import androidx.test.rule.ActivityTestRule
 import com.nhaarman.mockitokotlin2.doAnswer
@@ -37,7 +36,6 @@ import java.math.BigDecimal
 @MediumTest
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
-@LargeTest
 class AccountFragmentTest : KoinTest {
     private val fakeAccountData = AccountData(
         balance = "100.20", account = "NL30MOYO0001234567", transactions = listOf(
