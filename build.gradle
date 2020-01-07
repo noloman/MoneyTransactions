@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply plugin: Plugins.gradleVersions
+apply plugin: Plugins.kotlin
 
 buildscript {
     repositories {
@@ -11,8 +12,6 @@ buildscript {
         classpath Libraries.gradle
         classpath Libraries.gradleKotlin
         classpath Libraries.gradleVersions
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -23,6 +22,13 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

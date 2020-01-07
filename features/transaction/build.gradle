@@ -35,6 +35,9 @@ dependencies {
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.material
     testImplementation TestLibraries.junit
+
+    androidTestImplementation TestLibraries.extRules
     androidTestImplementation TestLibraries.extJunit
     androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.fragmentTesting
 }

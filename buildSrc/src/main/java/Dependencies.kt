@@ -4,13 +4,13 @@ object ApplicationId {
 
 object Modules {
     const val app = ":app"
+    const val core = ":core"
     const val data_account = ":libraries:data-account"
     const val data_transaction = ":libraries:data-transaction"
-    const val repository = ":libraries:repository"
     const val features_account = ":features:account"
     const val features_transaction = ":features:transaction"
-    const val presentation = ":libraries:presentation"
     const val navigation = ":libraries:navigation"
+    const val shared = ":libraries:shared"
 }
 
 object Releases {
@@ -38,8 +38,7 @@ object Versions {
     const val buildToolsVersion = "29.0.2"
     const val gradle = "3.4.2"
     const val threeTenAbpJakeWharton = "1.2.1"
-    const val appcompat = "1.0.2"
-    const val design = "1.0.0"
+    const val appcompat = "1.1.0"
     const val cardview = "1.0.0"
     const val recyclerview = "1.0.0"
     const val ktx = "1.0.0-alpha1"
@@ -47,14 +46,16 @@ object Versions {
     const val moshi = "1.8.0"
     const val lifecycle = "2.0.0"
     const val leakCanary = "2.0-beta-3"
-    const val koin = "2.0.0-beta-1"
+    const val koin = "2.0.1"
     const val junit = "4.12"
     const val mockitoKotlin = "2.1.0"
     const val mockitoInline = "3.0.0"
     const val coroutinesCore = "1.3.2"
+    const val dexmakerMockitoInline = "2.25.0"
 }
 
 object Plugins {
+    const val kotlin = "kotlin"
     const val gradleVersions = "com.github.ben-manes.versions"
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"
@@ -64,6 +65,7 @@ object Plugins {
 }
 
 object Libraries {
+    const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
@@ -81,6 +83,7 @@ object Libraries {
         "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbpJakeWharton}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCore}"
+    const val coroutinesAndroid = "kotlinx-coroutines-android:${Versions.coroutinesCore}"
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val gradleVersions =
         "com.github.ben-manes:gradle-versions-plugin:${Versions.gradleVersions}"
@@ -100,6 +103,8 @@ object TestLibraries {
     const val junit = "junit:junit:${Versions.junit}"
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
     const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+    const val dexMakerMockitoInline =
+        "com.linkedin.dexmaker:dexmaker-mockito-inline:${Versions.dexmakerMockitoInline}"
     const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
     const val koinTest = "org.koin:koin-test:${Versions.koin}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"

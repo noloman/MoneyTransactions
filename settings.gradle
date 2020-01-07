@@ -1,1 +1,1 @@
-include Modules.app, Modules.data_account, Modules.data_transaction, Modules.repository, Modules.features_account, Modules.features_transaction, Modules.presentation, Modules.navigation
+include Modules.app, Modules.data_account, Modules.data_transaction, Modules.features_account, Modules.features_transaction, Modules.navigation, Modules.core, Modules.shared

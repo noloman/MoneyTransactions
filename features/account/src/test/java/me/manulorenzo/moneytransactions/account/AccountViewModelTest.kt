@@ -7,11 +7,14 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import me.manulorenzo.moneytransactions.core.Repository
+import me.manulorenzo.moneytransactions.core.di.repositoryModule
+import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
-import me.manulorenzo.moneytransactions.presentation.CoroutinesTestRule
-import me.manulorenzo.moneytransactions.presentation.di.coroutinesModule
-import me.manulorenzo.moneytransactions.repository.Repository
-import me.manulorenzo.moneytransactions.repository.di.repositoryModule
+import me.manulorenzo.moneytransactions.shared.CoroutinesTestRule
+import me.manulorenzo.moneytransactions.shared.TestCoroutineContextProvider
+import me.manulorenzo.moneytransactions.shared.di.coroutinesModule
+import me.manulorenzo.moneytransactions.shared.di.moshiAccountDataAdapterModule
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -39,7 +42,8 @@ class AccountViewModelTest : AutoCloseKoinTest() {
             modules(
                 listOf(
                     repositoryModule,
-                    coroutinesModule
+                    coroutinesModule,
+                    moshiAccountDataAdapterModule
                 )
             )
         }
@@ -53,9 +57,9 @@ class AccountViewModelTest : AutoCloseKoinTest() {
 
         accountViewModel = AccountViewModel(
             repository,
-            TestCoroutinesContextProvider()
+            TestCoroutineContextProvider()
         )
-        accountViewModel.accountLiveData.observeForever { account: me.manulorenzo.moneytransactions.data_account.Account? ->
+        accountViewModel.accountLiveData.observeForever { account: Account? ->
             assertEquals(fakeAccountData?.account, account?.account)
         }
         verify(accountViewModel.repository).getAccount()
@@ -69,7 +73,7 @@ class AccountViewModelTest : AutoCloseKoinTest() {
 
             accountViewModel = AccountViewModel(
                 repository,
-                TestCoroutinesContextProvider()
+                TestCoroutineContextProvider()
             )
             assertEquals("849.70", accountViewModel.getTransactionsSum(fakeAccountData))
         }
