@@ -1,14 +1,11 @@
 name: Android CI
 
-on:
-  push:
-    branches: 
-      - master
+on: [push]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
 
     steps:
     - uses: actions/checkout@v1
@@ -16,9 +13,14 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Create local.properties
+      run: echo "gmaps.v2.apikey=" > local.properties
     - name: Build with Gradle
-      run: ./gradlew build --stacktrace
-    - name: Run Unit tests
+      run: ./gradlew build
+    - name: run unit tests
       run: ./gradlew testDebugUnitTest
-    - name: Run UI Tests
-      uses: "vgaidarji/android-github-actions/emulator@v1.0.0"
+    - name: run instrumented tests
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        script: ./gradlew connectedCheck
