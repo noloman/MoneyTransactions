@@ -56,7 +56,6 @@ dependencies {
     implementation SupportLibraries.legacy
     testImplementation TestLibraries.koinTest
     testImplementation TestLibraries.junit
-    testImplementation TestLibraries.robolectric
     testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.lifecycleTesting
     testImplementation TestLibraries.coroutinesTest

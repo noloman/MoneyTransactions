@@ -30,7 +30,6 @@ object Versions {
     const val espresso = "3.2.0"
     const val testRunner = "1.2.0"
     const val coroutinesTest = "1.3.2"
-    const val robolectric = "4.3.1"
     const val constraintLayout = "1.1.3"
     const val minSdkVersion = 21
     const val targetSdkVersion = 29
@@ -107,7 +106,6 @@ object TestLibraries {
         "com.linkedin.dexmaker:dexmaker-mockito-inline:${Versions.dexmakerMockitoInline}"
     const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
     const val koinTest = "org.koin:koin-test:${Versions.koin}"
-    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
     const val coroutinesTest =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
