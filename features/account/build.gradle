@@ -31,16 +31,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Modules.navigation)
 
-    implementation project(Modules.presentation)
-    testImplementation project(Modules.presentation)
+    implementation project(Modules.shared)
+    testImplementation project(Modules.shared)
 
     implementation project(Modules.data_account)
     testImplementation project(Modules.data_account)
 
     implementation project(Modules.data_transaction)
     testImplementation project(Modules.data_transaction)
-
-    implementation project(Modules.repository)
 
     implementation project(Modules.core)
     testImplementation project(Modules.core)
@@ -54,13 +52,14 @@ dependencies {
     androidTestImplementation(TestLibraries.koinTest) { exclude group: 'org.mockito' }
 //    androidTestImplementation 'org.mockito:mockito-android:3.1.0'
     kaptTest Libraries.moshiCodegen
-    implementation Libraries.threeTenAbpJakeWharton
     implementation SupportLibraries.recyclerview
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.cardview
+    implementation Libraries.threeTenAbpJakeWharton
     implementation Libraries.lifecycleExtensions
     implementation Libraries.lifecycleViewModel
     implementation Libraries.kotlin
     implementation Libraries.coroutinesCore
-    implementation SupportLibraries.appcompat
     implementation Libraries.ktx
     implementation Libraries.kotlinReflect
 
@@ -88,6 +87,8 @@ dependencies {
     androidTestImplementation Libraries.kotlinReflect
     kaptAndroidTest Libraries.moshiCodegen
     androidTestImplementation Libraries.moshiKotlin
+    debugImplementation TestLibraries.fragmentTesting
+
 }
 
 kapt {

@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import me.manulorenzo.moneytransactions.core.Repository
 import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
 import me.manulorenzo.moneytransactions.data_transaction.TransactionData
-import me.manulorenzo.moneytransactions.presentation.CoroutinesContextProvider
-import me.manulorenzo.moneytransactions.repository.Repository
+import me.manulorenzo.moneytransactions.shared.CoroutinesContextProvider
 import me.manulorenzo.moneytransactions.shared.account
 import java.math.BigDecimal
 

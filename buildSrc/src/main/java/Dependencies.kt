@@ -7,11 +7,10 @@ object Modules {
     const val core = ":core"
     const val data_account = ":libraries:data-account"
     const val data_transaction = ":libraries:data-transaction"
-    const val repository = ":libraries:repository"
     const val features_account = ":features:account"
     const val features_transaction = ":features:transaction"
-    const val presentation = ":libraries:presentation"
     const val navigation = ":libraries:navigation"
+    const val shared = ":libraries:shared"
 }
 
 object Releases {
@@ -56,6 +55,7 @@ object Versions {
 }
 
 object Plugins {
+    const val kotlin = "kotlin"
     const val gradleVersions = "com.github.ben-manes.versions"
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"

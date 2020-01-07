@@ -7,10 +7,10 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import me.manulorenzo.moneytransactions.core.Repository
+import me.manulorenzo.moneytransactions.core.di.repositoryModule
 import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
-import me.manulorenzo.moneytransactions.repository.Repository
-import me.manulorenzo.moneytransactions.repository.di.repositoryModule
 import me.manulorenzo.moneytransactions.shared.CoroutinesTestRule
 import me.manulorenzo.moneytransactions.shared.TestCoroutineContextProvider
 import me.manulorenzo.moneytransactions.shared.di.coroutinesModule

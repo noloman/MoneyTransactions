@@ -39,6 +39,12 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(Modules.core)
+    implementation project(Modules.features_account)
+    implementation project(Modules.features_transaction)
+    implementation project(Modules.data_transaction)
+    implementation project(Modules.data_account)
+    implementation project(Modules.shared)
+    implementation project(Modules.navigation)
 
     implementation Libraries.threeTenAbpJakeWharton
     implementation Libraries.koinAndroid
@@ -47,7 +53,6 @@ dependencies {
     implementation SupportLibraries.appcompat
     implementation Libraries.ktx
     implementation SupportLibraries.constraintLayout
-    implementation SupportLibraries.cardview
     implementation SupportLibraries.legacy
     testImplementation TestLibraries.koinTest
     testImplementation TestLibraries.junit
@@ -68,9 +73,9 @@ dependencies {
     androidTestImplementation TestLibraries.extRules
     androidTestImplementation TestLibraries.extJunit
     debugImplementation Libraries.leakCanaryAndroid
-    debugImplementation(TestLibraries.fragmentTesting) {
-        exclude group: 'androidx.test', module: 'core'
-    }
+//    debugImplementation(TestLibraries.fragmentTesting) {
+//        exclude group: 'androidx.test', module: 'core'
+//    }
 }
 
 kapt {

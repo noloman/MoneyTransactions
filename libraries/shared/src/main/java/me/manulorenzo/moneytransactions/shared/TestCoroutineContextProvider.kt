@@ -1,7 +1,6 @@
 package me.manulorenzo.moneytransactions.shared
 
 import kotlinx.coroutines.Dispatchers
-import me.manulorenzo.moneytransactions.presentation.CoroutinesContextProvider
 import kotlin.coroutines.CoroutineContext
 
 class TestCoroutineContextProvider : CoroutinesContextProvider() {

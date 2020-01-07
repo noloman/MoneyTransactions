@@ -5,6 +5,7 @@ import androidx.fragment.app.testing.launchFragment
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import androidx.test.filters.MediumTest
 import androidx.test.rule.ActivityTestRule
 import kotlinx.android.synthetic.main.fragment_transaction.amount
 import kotlinx.android.synthetic.main.fragment_transaction.balanceAfter
@@ -22,6 +23,7 @@ import java.math.BigDecimal
 import java.util.Currency
 import java.util.Locale
 
+@MediumTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class TransactionFragmentTest {

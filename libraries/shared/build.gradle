@@ -29,7 +29,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(Modules.presentation)
     implementation project(Modules.data_account)
     implementation project(Modules.data_transaction)
 

@@ -7,6 +7,7 @@
         <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -20,8 +21,7 @@
             <option value="$PROJECT_DIR$/libraries/data-account" />
             <option value="$PROJECT_DIR$/libraries/data-transaction" />
             <option value="$PROJECT_DIR$/libraries/navigation" />
-            <option value="$PROJECT_DIR$/libraries/presentation" />
-            <option value="$PROJECT_DIR$/libraries/repository" />
+            <option value="$PROJECT_DIR$/libraries/shared" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

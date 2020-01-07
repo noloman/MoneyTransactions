@@ -18,10 +18,6 @@ import java.util.Locale
 class AccountFragment : Fragment() {
     private val accountViewModel: AccountViewModel by viewModel()
 
-    companion object {
-        fun newInstance() = AccountFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
