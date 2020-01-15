@@ -21,7 +21,7 @@
             <option value="$PROJECT_DIR$/libraries/data-account" />
             <option value="$PROJECT_DIR$/libraries/data-transaction" />
             <option value="$PROJECT_DIR$/libraries/navigation" />
-            <option value="$PROJECT_DIR$/libraries/shared" />
+            <option value="$PROJECT_DIR$/libraries/test_shared" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

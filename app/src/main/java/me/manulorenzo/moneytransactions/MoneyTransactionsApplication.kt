@@ -30,7 +30,8 @@ class MoneyTransactionsApplication : Application() {
                     repositoryModule,
                     coroutinesModule,
                     accountViewModelModule,
-                    moshiAccountDataAdapterModule
+                    moshiAccountDataAdapterModule,
+                    assetManagerModule(this@MoneyTransactionsApplication)
                 )
             )
         }
