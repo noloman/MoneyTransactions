@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions.shared
+package me.manulorenzo.moneytransactions.core
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson

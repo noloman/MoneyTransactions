@@ -28,21 +28,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(Modules.data_account)
-    implementation project(Modules.data_transaction)
+    implementation project(Modules.core)
 
-    implementation SupportLibraries.appcompat
-    implementation TestLibraries.junit
+    implementation Libraries.kotlin
     implementation Libraries.coroutinesCore
-    implementation TestLibraries.extJunit
+    implementation Libraries.coroutinesAndroid
+    implementation TestLibraries.junit
     implementation TestLibraries.coroutinesTest
-    implementation Libraries.moshiKotlin
-    implementation Libraries.moshiAdapters
-    implementation Libraries.koinViewModel
-    implementation Libraries.koinAndroid
-    implementation Libraries.threeTenAbpJakeWharton
-    testImplementation TestLibraries.koinTest
-    androidTestImplementation TestLibraries.koinTest
-    kapt Libraries.moshiCodegen
 }

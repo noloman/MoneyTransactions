@@ -1,6 +1,7 @@
 apply plugin: Plugins.androidLibrary
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
+apply from: Plugins.testDependenciesGradle
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -26,7 +27,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Modules.data_transaction)
     implementation Libraries.kotlin
     implementation Libraries.threeTenAbpJakeWharton
@@ -34,10 +34,4 @@ dependencies {
     implementation SupportLibraries.constraintLayout
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.material
-    testImplementation TestLibraries.junit
-
-    androidTestImplementation TestLibraries.extRules
-    androidTestImplementation TestLibraries.extJunit
-    androidTestImplementation TestLibraries.espressoCore
-    androidTestImplementation TestLibraries.fragmentTesting
 }

@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions.shared
+package me.manulorenzo.moneytransactions.core
 
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext

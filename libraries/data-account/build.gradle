@@ -2,6 +2,7 @@ apply plugin: Plugins.androidLibrary
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.kotlinKapt
+apply from: Plugins.testDependenciesGradle
 
 android {
     compileSdkVersion Versions.compileSdkVersion

@@ -16,11 +16,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneytransactions.account.util.EspressoMatchers
 import me.manulorenzo.moneytransactions.core.Repository
+import me.manulorenzo.moneytransactions.core.account
+import me.manulorenzo.moneytransactions.core.di.coroutinesModule
 import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
 import me.manulorenzo.moneytransactions.data_transaction.TransactionData
-import me.manulorenzo.moneytransactions.shared.account
-import me.manulorenzo.moneytransactions.shared.di.coroutinesModule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

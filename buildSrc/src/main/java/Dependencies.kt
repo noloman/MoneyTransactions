@@ -10,7 +10,7 @@ object Modules {
     const val features_account = ":features:account"
     const val features_transaction = ":features:transaction"
     const val navigation = ":libraries:navigation"
-    const val shared = ":libraries:shared"
+    const val test_shared = ":libraries:test_shared"
 }
 
 object Releases {
@@ -29,7 +29,6 @@ object Versions {
     const val threeTenAbp = "1.4.0"
     const val espresso = "3.2.0"
     const val testRunner = "1.2.0"
-    const val coroutinesTest = "1.3.2"
     const val constraintLayout = "1.1.3"
     const val minSdkVersion = 21
     const val targetSdkVersion = 29
@@ -49,7 +48,7 @@ object Versions {
     const val junit = "4.12"
     const val mockitoKotlin = "2.1.0"
     const val mockitoInline = "3.0.0"
-    const val coroutinesCore = "1.3.2"
+    const val coroutines = "1.3.3"
     const val dexmakerMockitoInline = "2.25.0"
 }
 
@@ -61,6 +60,7 @@ object Plugins {
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val kotlinKapt = "kotlin-kapt"
     const val androidLibrary = "com.android.library"
+    const val testDependenciesGradle = "../../test_dependencies.gradle"
 }
 
 object Libraries {
@@ -81,8 +81,9 @@ object Libraries {
     const val threeTenAbpJakeWharton =
         "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbpJakeWharton}"
     const val coroutinesCore =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCore}"
-    const val coroutinesAndroid = "kotlinx-coroutines-android:${Versions.coroutinesCore}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val coroutinesAndroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val gradleVersions =
         "com.github.ben-manes:gradle-versions-plugin:${Versions.gradleVersions}"
@@ -107,7 +108,7 @@ object TestLibraries {
     const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
     const val koinTest = "org.koin:koin-test:${Versions.koin}"
     const val coroutinesTest =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val espressoContrib = "androidx.test.espresso:espresso-contrib:${Versions.espresso}"

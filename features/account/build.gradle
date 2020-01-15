@@ -2,6 +2,7 @@ apply plugin: Plugins.androidLibrary
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.kotlinKapt
+apply from: Plugins.testDependenciesGradle
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -28,30 +29,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Modules.navigation)
-
-    implementation project(Modules.shared)
-    testImplementation project(Modules.shared)
-
     implementation project(Modules.data_account)
-    testImplementation project(Modules.data_account)
-
     implementation project(Modules.data_transaction)
-    testImplementation project(Modules.data_transaction)
-
     implementation project(Modules.core)
-    testImplementation project(Modules.core)
-    androidTestImplementation project(Modules.core)
 
     implementation SupportLibraries.constraintLayout
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
-    testImplementation TestLibraries.koinTest
-    androidTestImplementation Libraries.koinViewModel
-    androidTestImplementation(TestLibraries.koinTest) { exclude group: 'org.mockito' }
-//    androidTestImplementation 'org.mockito:mockito-android:3.1.0'
-    kaptTest Libraries.moshiCodegen
     implementation SupportLibraries.recyclerview
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.cardview
@@ -63,32 +48,9 @@ dependencies {
     implementation Libraries.ktx
     implementation Libraries.kotlinReflect
 
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.lifecycleTesting
-    testImplementation Libraries.moshiKotlin
-    testImplementation Libraries.moshiAdapters
-    testImplementation TestLibraries.mockitoInline
-    testImplementation TestLibraries.mockitoKotlin
-    testImplementation TestLibraries.extJunit
-    testImplementation TestLibraries.espressoCore
-    testImplementation TestLibraries.lifecycleTesting
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.coroutinesTest
-    testImplementation TestLibraries.extRules
+    kaptTest Libraries.moshiCodegen
 
-    androidTestImplementation TestLibraries.mockitoKotlin
-    androidTestImplementation TestLibraries.extJunit
-    androidTestImplementation TestLibraries.espressoCore
-    androidTestImplementation TestLibraries.lifecycleTesting
-    androidTestImplementation TestLibraries.junit
-    androidTestImplementation TestLibraries.coroutinesTest
-    androidTestImplementation TestLibraries.extRules
-    androidTestImplementation TestLibraries.dexMakerMockitoInline
-    androidTestImplementation Libraries.kotlinReflect
     kaptAndroidTest Libraries.moshiCodegen
-    androidTestImplementation Libraries.moshiKotlin
-    debugImplementation TestLibraries.fragmentTesting
-
 }
 
 kapt {

@@ -8,13 +8,12 @@ import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import me.manulorenzo.moneytransactions.core.Repository
+import me.manulorenzo.moneytransactions.core.TestCoroutineContextProvider
+import me.manulorenzo.moneytransactions.core.di.coroutinesModule
+import me.manulorenzo.moneytransactions.core.di.moshiAccountDataAdapterModule
 import me.manulorenzo.moneytransactions.core.di.repositoryModule
 import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
-import me.manulorenzo.moneytransactions.shared.CoroutinesTestRule
-import me.manulorenzo.moneytransactions.shared.TestCoroutineContextProvider
-import me.manulorenzo.moneytransactions.shared.di.coroutinesModule
-import me.manulorenzo.moneytransactions.shared.di.moshiAccountDataAdapterModule
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -33,8 +32,8 @@ class AccountViewModelTest : AutoCloseKoinTest() {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
-    @get:Rule
-    val coroutinesTestRule = CoroutinesTestRule()
+//    @get:Rule
+//    val coroutinesTestRule = CoroutinesTestRule()
 
     @Before
     fun setup() {

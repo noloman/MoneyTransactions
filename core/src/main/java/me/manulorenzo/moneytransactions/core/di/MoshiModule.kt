@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions.shared.di
+package me.manulorenzo.moneytransactions.core.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

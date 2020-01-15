@@ -2,6 +2,7 @@ apply plugin: Plugins.androidApplication
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.kotlinKapt
+apply from: '../test_dependencies.gradle'
 apply from: 'https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle'
 
 android {
@@ -37,13 +38,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(Modules.core)
     implementation project(Modules.features_account)
     implementation project(Modules.features_transaction)
     implementation project(Modules.data_transaction)
     implementation project(Modules.data_account)
-    implementation project(Modules.shared)
+    implementation project(Modules.test_shared)
     implementation project(Modules.navigation)
 
     implementation Libraries.threeTenAbpJakeWharton
@@ -54,24 +54,27 @@ dependencies {
     implementation Libraries.ktx
     implementation SupportLibraries.constraintLayout
     implementation SupportLibraries.legacy
-    testImplementation TestLibraries.koinTest
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.mockitoKotlin
-    testImplementation TestLibraries.lifecycleTesting
-    testImplementation TestLibraries.coroutinesTest
+//    testImplementation TestLibraries.koinTest
+//    testImplementation TestLibraries.junit
+//    testImplementation TestLibraries.mockitoKotlin
+//    testImplementation TestLibraries.lifecycleTesting
+//    testImplementation TestLibraries.coroutinesTest
 
-    androidTestImplementation TestLibraries.testRunner
-    androidTestImplementation TestLibraries.espressoCore
-    androidTestImplementation(TestLibraries.threeTenAbp) {
-        exclude group: 'com.jakewharton.threetenabp', module: 'threetenabp'
-    }
+//    androidTestImplementation TestLibraries.testRunner
+//    androidTestImplementation TestLibraries.espressoCore
+//    androidTestImplementation(TestLibraries.threeTenAbp) {
+//        exclude group: 'com.jakewharton.threetenabp', module: 'threetenabp'
+//    }
     // debugImplementation because LeakCanary should only run in debug builds.
-    androidTestImplementation TestLibraries.espressoCore
-    androidTestImplementation TestLibraries.espressoContrib
-    androidTestImplementation TestLibraries.testRunner
-    androidTestImplementation TestLibraries.extRules
-    androidTestImplementation TestLibraries.extJunit
-    debugImplementation Libraries.leakCanaryAndroid
+//    androidTestImplementation TestLibraries.espressoCore
+//    androidTestImplementation TestLibraries.espressoContrib
+//    androidTestImplementation TestLibraries.testRunner
+//    androidTestImplementation TestLibraries.extRules
+//    androidTestImplementation TestLibraries.extJunit
+//    debugImplementation Libraries.leakCanaryAndroid
+
+
+
 //    debugImplementation(TestLibraries.fragmentTesting) {
 //        exclude group: 'androidx.test', module: 'core'
 //    }

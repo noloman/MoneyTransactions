@@ -2,6 +2,7 @@ apply plugin: Plugins.androidLibrary
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.kotlinKapt
+apply from: '../test_dependencies.gradle'
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -30,8 +31,10 @@ android {
 dependencies {
     implementation project(Modules.data_account)
     implementation project(Modules.data_transaction)
-    testImplementation project(Modules.shared)
 
+    implementation Libraries.threeTenAbpJakeWharton
+    implementation Libraries.coroutinesAndroid
+    implementation Libraries.coroutinesCore
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
     implementation Libraries.kotlin
@@ -39,12 +42,6 @@ dependencies {
     implementation Libraries.ktx
     implementation Libraries.moshiKotlin
     implementation Libraries.moshiAdapters
+
     kapt Libraries.moshiCodegen
-    testImplementation Libraries.koinAndroid
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.koinTest
-    testImplementation TestLibraries.mockitoKotlin
-    testImplementation TestLibraries.coroutinesTest
-    androidTestImplementation TestLibraries.extJunit
-    androidTestImplementation TestLibraries.espressoCore
 }

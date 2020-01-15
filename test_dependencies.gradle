@@ -1,0 +1,18 @@
+dependencies {
+    testImplementation project(Modules.test_shared)
+
+    testImplementation TestLibraries.lifecycleTesting
+    testImplementation TestLibraries.coroutinesTest
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.koinTest
+    testImplementation TestLibraries.mockitoKotlin
+    testImplementation TestLibraries.threeTenAbp
+    testImplementation Libraries.moshiKotlin
+
+    androidTestImplementation TestLibraries.fragmentTesting
+    androidTestImplementation TestLibraries.dexMakerMockitoInline
+    androidTestImplementation TestLibraries.espressoContrib
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.extJunit
+    androidTestImplementation TestLibraries.extRules
+}

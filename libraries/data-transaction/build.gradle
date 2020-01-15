@@ -2,6 +2,7 @@ apply plugin: Plugins.androidLibrary
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.kotlinKapt
+apply from: Plugins.testDependenciesGradle
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -29,7 +30,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Libraries.kotlin
     implementation Libraries.threeTenAbpJakeWharton
     implementation SupportLibraries.appcompat
@@ -37,9 +37,6 @@ dependencies {
     implementation Libraries.moshiKotlin
     implementation Libraries.moshiAdapters
     kapt Libraries.moshiCodegen
-    testImplementation TestLibraries.junit
-    androidTestImplementation TestLibraries.extJunit
-    androidTestImplementation TestLibraries.espressoCore
 }
 
 kapt {

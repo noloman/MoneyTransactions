@@ -3,9 +3,9 @@ package me.manulorenzo.moneytransactions
 import android.app.Application
 import android.os.StrictMode
 import me.manulorenzo.moneytransactions.account.di.accountViewModelModule
+import me.manulorenzo.moneytransactions.core.di.coroutinesModule
+import me.manulorenzo.moneytransactions.core.di.moshiAccountDataAdapterModule
 import me.manulorenzo.moneytransactions.core.di.repositoryModule
-import me.manulorenzo.moneytransactions.shared.di.coroutinesModule
-import me.manulorenzo.moneytransactions.shared.di.moshiAccountDataAdapterModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

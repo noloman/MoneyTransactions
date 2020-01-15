@@ -7,9 +7,9 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import me.manulorenzo.moneytransactions.core.di.moshiAccountDataAdapterModule
 import me.manulorenzo.moneytransactions.core.di.repositoryModule
 import me.manulorenzo.moneytransactions.data_account.AccountData
-import me.manulorenzo.moneytransactions.shared.di.moshiAccountDataAdapterModule
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -30,7 +30,12 @@ class RepositoryTest : AutoCloseKoinTest() {
     fun setup() {
         startKoin {
             androidContext(context)
-            modules(listOf(repositoryModule, moshiAccountDataAdapterModule))
+            modules(
+                listOf(
+                    repositoryModule,
+                    moshiAccountDataAdapterModule
+                )
+            )
         }
         declareMock<Repository>()
         declareMock<JsonAdapter<AccountData>>()

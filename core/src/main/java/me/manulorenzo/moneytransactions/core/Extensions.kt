@@ -1,4 +1,4 @@
-package me.manulorenzo.moneytransactions.shared
+package me.manulorenzo.moneytransactions.core
 
 import me.manulorenzo.moneytransactions.data_account.Account
 import me.manulorenzo.moneytransactions.data_account.AccountData
